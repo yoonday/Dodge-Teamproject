@@ -36,7 +36,7 @@ public class DodgeUIController : MonoBehaviour
 
 
         if (PlayerPrefs.HasKey("이름 미정"))
-            bestScore = PlayerPrefs.GetInt("이름 미정");
+            InGameBestScore = PlayerPrefs.GetInt("이름 미정");
 
     }
 
