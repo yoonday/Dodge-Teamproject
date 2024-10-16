@@ -1,18 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : DodgeController
 {
-    // Start is called before the first frame update
-    void Start()
+    private Camera camera;
+
+    protected override void Awake()
     {
-        
+        camera = Camera.main;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnMove(InputValue value) 
     {
-        
+        Vector2 moveInput = value.Get<Vector2>().normalized; 
+        CallMoveEvent(moveInput);  
+
+    }
+
+    public void OnFire(InputValue value) 
+    {
+        // TODO :: TopDownController 내용 수정 protected bool IsAttacking { get; set; }
+        // IsAttacking = value.isPressed;  
     }
 }
