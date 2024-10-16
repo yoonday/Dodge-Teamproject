@@ -4,57 +4,44 @@ using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 
 public class DodgeUIController : MonoBehaviour
 {
-    //1P, 2P 플레이어 이름 가져오기, 
-
-    [SerializeField] private TextMeshProUGUI playerName;
-    [SerializeField] private Image playerSkillimage;
-    [SerializeField] private Image[] playerHealth;
-    [SerializeField] private TextMeshProUGUI score;
-
-    private HealthSystem healthSystem;
 
 
-    private int currentScore = 0;
+    protected HealthSystem healthSystem;
 
-    private void Awake()
+    protected int currentScore = 0;
+    protected int InGameBestScore = 0;
+
+    [SerializeField] protected  TextMeshProUGUI score;
+    [SerializeField] protected TextMeshProUGUI bestScore;
+    [SerializeField] protected GameObject resultScreen;
+
+
+    protected virtual void Start()
     {
 
-        playerName = GameObject.Find($"{gameObject.name}UI").GetComponent<TextMeshProUGUI>();
-        playerSkillimage = GameObject.Find($"{gameObject.name}SkillIcon").GetComponent<Image>();
-        playerHealth = GameObject.Find($"{gameObject.name}Health").GetComponentsInChildren<Image>();
+        // 이름 수정 필요
+        resultScreen = GameObject.Find("ResultUI").GetComponent<GameObject>();
         score = GameObject.Find("GameScore").GetComponent<TextMeshProUGUI>();
+        bestScore = GameObject.Find("GameBestScore").GetComponent<TextMeshProUGUI>();
 
+    }
 
+    protected virtual void Awake()
+    {
         healthSystem = GetComponent<HealthSystem>();
-    }
 
 
-    private void Start()
-    {
-
-        healthSystem.OnDamage += PlayerLostHealth;
-        healthSystem.OnHeal += PlayerGetHealth;
+        if (PlayerPrefs.HasKey("이름 미정"))
+            bestScore = PlayerPrefs.GetInt("이름 미정");
 
     }
 
-    private void PlayerGetHealth()
-    {
-      
-
-    }
-
-    private void PlayerLostHealth()
-    {
-
-        //플레이어 health 이미지 비활성화 
 
 
-
-    }
 
 
 
