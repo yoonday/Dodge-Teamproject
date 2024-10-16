@@ -20,7 +20,6 @@ public class HealthSystem : MonoBehaviour
     {
 
 
-
         if (CurrentHealth <= 0f)
         {
             CallDeath();
