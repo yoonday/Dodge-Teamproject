@@ -419,9 +419,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 537700056}
-  - component: {fileID: 537700057}
-  m_Layer: 0
+  - component: {fileID: 829628790}
+  - component: {fileID: 829628791}
+  m_Layer: 7
   m_Name: MainSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -504,8 +504,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 584844567}
-  m_Layer: 0
+  - component: {fileID: 1511547255}
+  m_Layer: 7
   m_Name: BulletSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -535,10 +535,15 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 616434796}
-  - component: {fileID: 616434797}
-  m_Layer: 0
-  m_Name: MainSprite
+  - component: {fileID: 1612915652}
+  - component: {fileID: 1612915655}
+  - component: {fileID: 1612915654}
+  - component: {fileID: 1612915653}
+  - component: {fileID: 1612915656}
+  - component: {fileID: 1612915657}
+  - component: {fileID: 1612915658}
+  m_Layer: 7
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1643,7 +1648,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpawnPosition: {fileID: 1511547255}
   TestPrefab: {fileID: 1970850383017400521, guid: e9cab927fa4917148918c33a6a054a6d, type: 3}
---- !u!1 &1631665205
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1662,7 +1666,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1631665206
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1677,7 +1680,6 @@ MonoBehaviour:
   enemySpeed: 5
   movingDuration: 2
   moveCooltime: 2
---- !u!114 &1631665207
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1689,7 +1691,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04d5e8f06678cef4a999f7f9cab076de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!50 &1631665208
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -1716,7 +1717,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!4 &1631665209
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1732,7 +1732,6 @@ Transform:
   - {fileID: 994751176}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1722323124
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1751,7 +1750,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1722323125
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1766,7 +1764,6 @@ MonoBehaviour:
   enemySpeed: 5
   movingDuration: 2
   moveCooltime: 2
---- !u!114 &1722323126
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1778,7 +1775,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04d5e8f06678cef4a999f7f9cab076de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!50 &1722323127
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -1805,7 +1801,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!4 &1722323128
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1821,7 +1816,18 @@ Transform:
   - {fileID: 537700056}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1660057539 &9223372036854775807
+  m_GameObject: {fileID: 1612915651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f0189003e9635e4d97ec783b992063d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseStats:
+    statsChangeType: 0
+    maxHealth: 3
+    speed: 2
+    playerSO: {fileID: 11400000, guid: 368e75a02bb365e49b956bdc56369b73, type: 2}
+  statModifiers: []
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:

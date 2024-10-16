@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     
     private DodgeController controller;
     private Rigidbody2D movementRigidbody;
+    private PlayerStatHandler playerStatHandler;
 
     private Vector2 movementDirection = Vector2.zero; // 오류 방지 차원
 
@@ -17,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     {
         controller = GetComponent<DodgeController>();
         movementRigidbody = GetComponent<Rigidbody2D>();
+        playerStatHandler = GetComponent<PlayerStatHandler>();
     }
 
     void Start()

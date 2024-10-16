@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : DodgeController
+public class PlayerInputController : DodgeController
 {
     private Camera camera;
 
     protected override void Awake()
     {
+        base.Awake();
         camera = Camera.main;
     }
 
