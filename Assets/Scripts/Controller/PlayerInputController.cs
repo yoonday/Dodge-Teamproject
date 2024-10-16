@@ -21,7 +21,6 @@ public class PlayerController : DodgeController
 
     public void OnFire(InputValue value) 
     {
-        // TODO :: TopDownController 내용 수정 protected bool IsAttacking { get; set; }
-        // IsAttacking = value.isPressed;  
+        isAttacking = value.isPressed;  
     }
 }
