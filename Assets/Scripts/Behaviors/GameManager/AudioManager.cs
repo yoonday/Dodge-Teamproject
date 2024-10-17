@@ -13,8 +13,8 @@ public class AudioManager : Singleton<AudioManager>
     [Header("#SFX")]
     public AudioClip[] sfxClip;
     public float sfxVolume;
-    public int Channels;
-    AudioSource[] sfxPlayer;
+    public int channels;
+    AudioSource[] sfxPlayers;
     int ChannelIndex;
 
 
@@ -28,9 +28,20 @@ public class AudioManager : Singleton<AudioManager>
         bgmPlayer = bgmObject.AddComponent<AudioSource>();
         bgmPlayer.playOnAwake = false;
         bgmPlayer.loop = true;
-        bgmPlayer.volume = bgmVolume;     
-        // 효과음 플레이어 초기화 
+        bgmPlayer.volume = bgmVolume;
+        bgmPlayer.clip = bgmClip;
 
+        // 효과음 플레이어 초기화 
+        GameObject sfxObject = new GameObject("SfxPlayer");
+        sfxObject.transform.parent = transform;
+        sfxPlayers = new AudioSource[channels];
+
+        for (int index = 0; index < sfxPlayers.Length; index++)
+        { 
+            sfxPlayers[index] = sfxObject.AddComponent<AudioSource>();
+            sfxPlayers[index].playOnAwake = false;
+            sfxPlayers[index].volume = sfxVolume;
+        }
 
     }
 
