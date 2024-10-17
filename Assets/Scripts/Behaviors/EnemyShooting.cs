@@ -4,15 +4,34 @@ using UnityEngine;
 
 public class EnemyShooting : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private Transform projectileSpawnPosition;
+    [SerializeField] private GameObject projectile;
+
+    private DodgeController controller;
+    private EnemyAttackSO enemyAttack;
+
+
+    private void Awake()
     {
-        
+        controller = GetComponent<DodgeController>();
+        enemyAttack = (controller as DodgeEnemyController).EnemyAttack;
     }
 
-    // Update is called once per frame
-    void Update()
+    void Start()
     {
-        
+        controller.OnAttackEvent += OnShoot;
     }
+
+    private void OnShoot()
+    {
+        if (enemyAttack.angle == EnemyAttackSO.Angle.STRAIGHT)
+        {
+            Instantiate(projectile, projectileSpawnPosition.position, Quaternion.identity);
+        }
+        else
+        {
+            Instantiate(projectile, projectileSpawnPosition.position, Quaternion.identity);
+        }
+    }
+
 }
