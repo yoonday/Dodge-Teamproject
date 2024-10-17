@@ -8,13 +8,19 @@ public class DodgeEnemyController : DodgeController
     [SerializeField][Range(0f, 10f)] private float movingDuration;
     [SerializeField][Range(0f, 10f)] private float moveCooltime;
     [SerializeField] Sprite enemySprite;
+    [SerializeField] private EnemyAttackSO enemyAttack;
 
     private float randomPosRangeXMin;
     private float randomPosRangeXMax;
     private float randomPosRangeYMin;
     private float randomPosRangeYMax;
 
+    Coroutine randomMovingCoroutine;
+    Coroutine attackCoroutine;
+
+
     public float EnemySpeed { get { return enemySpeed; } }
+    public EnemyAttackSO EnemyAttack { get { return enemyAttack; } }
 
     public void Init(float enemySpeed)
     {
@@ -36,7 +42,18 @@ public class DodgeEnemyController : DodgeController
         randomPosRangeXMin = mainCamera.transform.position.x - cameraWidth + (enemySprite.bounds.size.x / 2); // È­¸é ¸Ç ¿ÞÂÊ ÁÂÇ¥.
         randomPosRangeXMax = mainCamera.transform.position.x + cameraWidth - (enemySprite.bounds.size.x / 2); // È­¸é ¸Ç ¿À¸¥ÂÊ ÁÂÇ¥.
 
-        StartCoroutine(MoveCoroutine());
+        randomMovingCoroutine = StartCoroutine(MoveCoroutine());
+    }
+
+    public void Stop()
+    {
+        StopCoroutine(randomMovingCoroutine);
+        CallMoveEvent(Vector2.zero);
+    }
+
+    public void Attack()
+    {
+        attackCoroutine = StartCoroutine(AttackCoroutine());
     }
 
 
@@ -49,6 +66,15 @@ public class DodgeEnemyController : DodgeController
             yield return new WaitForSeconds(movingDuration);
             CallMoveEvent(Vector2.zero);
             yield return new WaitForSeconds(moveCooltime);
+        }
+    }
+
+    private IEnumerator AttackCoroutine()
+    {
+        while (true)
+        {
+            
+            yield return new WaitForSeconds(5f);
         }
     }
 }
