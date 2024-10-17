@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1386346168836260936}
   - component: {fileID: 3659959913032112606}
-  - component: {fileID: 3883515290743456164}
+  - component: {fileID: 4320246798659556098}
   - component: {fileID: 3202263197664295184}
-  - component: {fileID: 7731082842519514318}
+  - component: {fileID: 5311043452176905584}
   - component: {fileID: 8425229922136818893}
   - component: {fileID: 761544927533713619}
   m_Layer: 7
@@ -65,7 +65,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &3883515290743456164
+--- !u!114 &4320246798659556098
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 98032459230036850}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b72207aa8af9c034f8081b344fec9b63, type: 3}
+  m_Script: {fileID: 11500000, guid: 3b663279e517ab64693e4177b62f64ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &3202263197664295184
@@ -107,7 +107,7 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &7731082842519514318
+--- !u!114 &5311043452176905584
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,7 +116,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 98032459230036850}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0545b0e477d986e4c88920a2c72755df, type: 3}
+  m_Script: {fileID: 11500000, guid: f17e25203e59a444a966e3a7e71d2a5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spaceshipSpeed: 5
