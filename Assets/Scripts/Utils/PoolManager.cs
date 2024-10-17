@@ -12,7 +12,6 @@ public class PoolManager : MonoBehaviour
         public int size;
     }
 
-
     public List<Pool> Pools;
     public Dictionary<string, Queue<GameObject>> PoolDictionary;
 

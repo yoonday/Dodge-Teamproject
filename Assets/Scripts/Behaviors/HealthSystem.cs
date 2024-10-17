@@ -6,6 +6,8 @@ using UnityEngine;
 public class HealthSystem : MonoBehaviour
 {
 
+    
+
     public event Action OnDamage;
     public event Action OnHeal;
     public event Action OnDeath;
@@ -18,7 +20,6 @@ public class HealthSystem : MonoBehaviour
 
     public bool ChangeHealth(int change)
     {
-
 
         if (CurrentHealth <= 0f)
         {

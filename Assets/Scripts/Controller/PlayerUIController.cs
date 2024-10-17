@@ -4,21 +4,27 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+
 public class PlayerUIController : DodgeUIController
 {
 
+    private HealthSystem health;
     [SerializeField] private TextMeshProUGUI playerName;
     [SerializeField] private Image playerSkillimage;
-    [SerializeField] private Image[] playerHealth;
+    [SerializeField] private GameObject[] playerHealth;
 
 
     protected override void Awake()
     {
         base.Awake();
 
+
+
+        health = GetComponent<HealthSystem>();
+
         playerName = GameObject.Find($"{gameObject.name}UI").GetComponent<TextMeshProUGUI>();
         playerSkillimage = GameObject.Find($"{gameObject.name}SkillIcon").GetComponent<Image>();
-        playerHealth = GameObject.Find($"{gameObject.name}Health").GetComponentsInChildren<Image>();
+        playerHealth = GameObject.Find($"{gameObject.name}Health").GetComponentsInChildren<GameObject>();
         
     }
 
@@ -35,7 +41,8 @@ public class PlayerUIController : DodgeUIController
     private void PlayerGetHealth()
     {
         //플레이어 health 이미지 활성화
-
+        for (int i = 0; i < health.CurrentHealth; i++)
+            playerHealth[i].SetActive(true);
 
     }
 
@@ -43,8 +50,8 @@ public class PlayerUIController : DodgeUIController
     {
 
         //플레이어 health 이미지 비활성화 
-
-
+        for (int i = 0; i < health.CurrentHealth; i++)
+            playerHealth[i].SetActive(true);
 
     }
 
