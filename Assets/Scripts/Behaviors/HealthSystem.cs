@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class HealthSystem : MonoBehaviour
 {
+    [SerializeField] private PlayerStatHandler playerStatHandler; // 스탯을 HeathSystem에서 관리하는 것이 용이할 듯
 
-    
 
     public event Action OnDamage;
     public event Action OnHeal;
@@ -15,11 +15,24 @@ public class HealthSystem : MonoBehaviour
      
     private float timeSinceLastChange = float.MaxValue;
     public float CurrentHealth { get; private set; }
-    private bool isAttacked = false;
+    private bool isAttacked = false; // 어디서 사용하는지?
 
+    private void Start()
+    {
+
+        if (playerStatHandler != null) // 초기 스탯 설정
+        {
+            CurrentHealth = playerStatHandler.CurrentStat.maxHealth;
+        }
+        else
+        {
+            Debug.LogWarning("PlayerStatHandler 연결 필요");
+        }
+    }
 
     public bool ChangeHealth(int change)
     {
+        CurrentHealth += change; // 체력에 값 변화
 
         if (CurrentHealth <= 0f)
         {
@@ -27,6 +40,7 @@ public class HealthSystem : MonoBehaviour
             return true;
 
         }
+
 
         if (change >= 0)
         {
@@ -47,7 +61,6 @@ public class HealthSystem : MonoBehaviour
     {
 
         OnDeath?.Invoke();
-
 
     }
 
