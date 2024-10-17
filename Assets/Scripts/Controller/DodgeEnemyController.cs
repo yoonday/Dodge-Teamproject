@@ -14,7 +14,6 @@ public class DodgeEnemyController : DodgeController
     private float randomPosRangeYMin;
     private float randomPosRangeYMax;
 
-
     public float EnemySpeed { get { return enemySpeed; } }
 
     public void Init(float enemySpeed)
