@@ -9,8 +9,12 @@ public class DodgeController : MonoBehaviour
     public event Action OnAttackEvent;
 
     private float timeSinceLastAttack = float.MaxValue;
+<<<<<<< HEAD
     protected bool isAttacking { get; set; }
     protected PlayerStatHandler stats {  get; set; }
+=======
+    protected bool isAttacking;
+>>>>>>> parent of 9aaaad6 (Merge pull request #4 from yoonday/feature_yys)
 
     protected virtual void Awake()
     {
@@ -20,7 +24,7 @@ public class DodgeController : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
-        HandleAttackDelay();
+        
     }
 
     public void CallMoveEvent(Vector2 direction)
@@ -32,6 +36,7 @@ public class DodgeController : MonoBehaviour
     {
         OnAttackEvent?.Invoke();
     }
+<<<<<<< HEAD
 
     private void HandleAttackDelay()
     {
@@ -45,4 +50,6 @@ public class DodgeController : MonoBehaviour
             CallAttackEvent(); 
         }
     }
+=======
+>>>>>>> parent of 9aaaad6 (Merge pull request #4 from yoonday/feature_yys)
 }
