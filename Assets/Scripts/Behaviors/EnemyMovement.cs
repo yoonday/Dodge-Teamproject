@@ -13,7 +13,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void Awake()
     {
-        // ê°™ì€ ê²Œì„ì˜¤ë¸Œì íŠ¸ì˜ TopDownController, Rigidbodyë¥¼ ê°€ì ¸ì˜¬ ê²ƒ 
+        // °°Àº °ÔÀÓ¿ÀºêÁ§Æ®ÀÇ TopDownController, Rigidbody¸¦ °¡Á®¿Ã °Í 
         movementController = GetComponent<DodgeController>();
         movementRigidbody = GetComponent<Rigidbody2D>();
 
@@ -22,20 +22,20 @@ public class EnemyMovement : MonoBehaviour
 
     private void Start()
     {
-        // OnMoveEventì— Moveë¥¼ í˜¸ì¶œí•˜ë¼ê³  ë“±ë¡í•¨
+        // OnMoveEvent¿¡ Move¸¦ È£ÃâÇÏ¶ó°í µî·ÏÇÔ
         movementController.OnMoveEvent += Move;
     }
 
     private void FixedUpdate()
     {
-        // ë¬¼ë¦¬ ì—…ë°ì´íŠ¸ì—ì„œ ì›€ì§ì„ ì ìš©
+        // ¹°¸® ¾÷µ¥ÀÌÆ®¿¡¼­ ¿òÁ÷ÀÓ Àû¿ë
         ApplyMovement(movementDirection);
     }
 
     private void Move(Vector2 destination)
     {
-        // ì´ë™ë°©í–¥ë§Œ ì •í•´ë‘ê³  ì‹¤ì œë¡œ ì›€ì§ì´ì§€ëŠ” ì•ŠìŒ.
-        // ì›€ì§ì´ëŠ” ê²ƒì€ ë¬¼ë¦¬ ì—…ë°ì´íŠ¸ì—ì„œ ì§„í–‰(rigidbodyê°€ ë¬¼ë¦¬ë‹ˆê¹Œ)
+        // ÀÌµ¿¹æÇâ¸¸ Á¤ÇØµÎ°í ½ÇÁ¦·Î ¿òÁ÷ÀÌÁö´Â ¾ÊÀ½.
+        // ¿òÁ÷ÀÌ´Â °ÍÀº ¹°¸® ¾÷µ¥ÀÌÆ®¿¡¼­ ÁøÇà(rigidbody°¡ ¹°¸®´Ï±î)
         movementDirection = destination;
     }
 
