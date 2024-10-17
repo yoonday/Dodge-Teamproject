@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3202263197664295184}
   - component: {fileID: 5311043452176905584}
   - component: {fileID: 8425229922136818893}
-  - component: {fileID: 761544927533713619}
+  - component: {fileID: 6050874439230166417}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -133,8 +133,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileSpawnPosition: {fileID: 3700510920390822517}
-  TestPrefab: {fileID: 1970850383017400521, guid: e9cab927fa4917148918c33a6a054a6d, type: 3}
---- !u!114 &761544927533713619
+  PlayerBullet: {fileID: 8046301987979651682, guid: ee9cb767c19f3f94bae4c58b044a76e9, type: 3}
+--- !u!114 &6050874439230166417
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,13 +143,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 98032459230036850}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f0189003e9635e4d97ec783b992063d, type: 3}
+  m_Script: {fileID: 11500000, guid: eef8456257ee73f47915b23a92fb58be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   baseStats:
     statsChangeType: 0
-    maxHealth: 3
-    speed: 2
+    maxHealth: 0
+    speed: 0
     playerSO: {fileID: 11400000, guid: 368e75a02bb365e49b956bdc56369b73, type: 2}
   statModifiers: []
 --- !u!1 &3580918381625824220
