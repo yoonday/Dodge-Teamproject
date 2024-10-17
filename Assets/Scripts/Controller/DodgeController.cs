@@ -21,7 +21,7 @@ public class DodgeController : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
-        
+        HandleAttackDelay();
     }
 
     public void CallMoveEvent(Vector2 direction)
