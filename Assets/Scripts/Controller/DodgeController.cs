@@ -9,6 +9,7 @@ public class DodgeController : MonoBehaviour
     public event Action OnAttackEvent;
 
     private float timeSinceLastAttack = float.MaxValue;
+
     protected bool isAttacking { get; set; }
     protected PlayerStatHandler stats {  get; set; }
 
@@ -20,7 +21,7 @@ public class DodgeController : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
-        HandleAttackDelay();
+        
     }
 
     public void CallMoveEvent(Vector2 direction)
