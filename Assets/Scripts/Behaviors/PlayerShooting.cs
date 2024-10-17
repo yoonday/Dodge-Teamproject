@@ -6,10 +6,10 @@ using UnityEngine;
 public class PlayerShooting : MonoBehaviour
 {
     private DodgeController controller;
-    [SerializeField] private Transform projectileSpawnPosition; // ÃÑ¾Ë ¹ß»ç À§Ä¡
+    [SerializeField] private Transform projectileSpawnPosition; // ì´ì•Œ ë°œì‚¬ ìœ„ì¹˜
 
-    // TODO :: Å×½ºÆ®¿ë ÇÁ¸®ÆÕ ±³Ã¼
-    public GameObject TestPrefab; 
+    // TODO :: í…ŒìŠ¤íŠ¸ìš© í”„ë¦¬íŒ¹ êµì²´
+    public GameObject TestPrefab;
 
 
     private void Awake()
@@ -29,7 +29,7 @@ public class PlayerShooting : MonoBehaviour
 
     private void CreateProjectile()
     {
-        // Åõ»çÃ¼(ÃÑ¾Ë)ÀÌ ½ºÆù Æ÷ÀÎÆ®¿¡¼­ È¸Àü ¾øÀÌ »ı¼ºµÊ
-        Instantiate(TestPrefab, projectileSpawnPosition.position, Quaternion.identity); 
+        // íˆ¬ì‚¬ì²´(ì´ì•Œ)ì´ ìŠ¤í° í¬ì¸íŠ¸ì—ì„œ íšŒì „ ì—†ì´ ìƒì„±ë¨
+        Instantiate(TestPrefab, projectileSpawnPosition.position, Quaternion.identity);
     }
 }

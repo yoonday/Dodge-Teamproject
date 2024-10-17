@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class PlayerStatHandler : MonoBehaviour
 {
-    // ÃÖÁ¾ Stat °è»ê ·ÎÁ÷ : ±âº» Stat + Ãß°¡ Stat
+    // ìµœì¢… Stat ê³„ì‚° ë¡œì§ : ê¸°ë³¸ Stat + ì¶”ê°€ Stat
 
-    [SerializeField] private PlayerStat baseStats; // ±âº» Stat
-    public PlayerStat CurrentStat {  get; private set; }
-    public List<PlayerStat> statModifiers = new List<PlayerStat>(); // Ãß°¡ Stat ´ãÀ» ¸®½ºÆ® »ı¼º
+    [SerializeField] private PlayerStat baseStats; // ê¸°ë³¸ Stat
+    public PlayerStat CurrentStat { get; private set; }
+    public List<PlayerStat> statModifiers = new List<PlayerStat>(); // ì¶”ê°€ Stat ë‹´ì„ ë¦¬ìŠ¤íŠ¸ ìƒì„±
 
     private void Awake()
     {
@@ -19,12 +19,12 @@ public class PlayerStatHandler : MonoBehaviour
     private void UpdateCharacterStat()
     {
         PlayerAttackSO playerSO = null;
-        if (baseStats.playerSO != null) // PlayerStat ÃÊ±âÈ­
+        if (baseStats.playerSO != null) // PlayerStat ì´ˆê¸°í™”
         {
             playerSO = Instantiate(baseStats.playerSO);
         }
 
-        // ÇöÀç Stat
+        // í˜„ì¬ Stat
         CurrentStat = new PlayerStat { playerSO = playerSO };
         CurrentStat.statsChangeType = baseStats.statsChangeType;
         CurrentStat.maxHealth = baseStats.maxHealth;

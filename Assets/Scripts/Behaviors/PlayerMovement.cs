@@ -7,12 +7,12 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float spaceshipSpeed = 5;
-    
+
     private DodgeController controller;
     private Rigidbody2D movementRigidbody;
     private PlayerStatHandler playerStatHandler;
 
-    private Vector2 movementDirection = Vector2.zero; // ¿À·ù ¹æÁö Â÷¿ø
+    private Vector2 movementDirection = Vector2.zero; // ì˜¤ë¥˜ ë°©ì§€ ì°¨ì›
 
     private void Awake()
     {
