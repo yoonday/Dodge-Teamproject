@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AudioManager : MonoBehaviour
+public class AudioManager : Singleton<AudioManager>
 {
-    public static AudioManager Instance;
-
+    
     [Header("BGM")]
-    public AudioClip BgmClip;
-    public float BgmVolume;
-    AudioSource BgmPlayer;
+    public AudioClip bgmClip;
+    public float bgmVolume;
+    AudioSource bgmPlayer;
 
     [Header("#SFX")]
     public AudioClip[] sfxClip;
@@ -18,18 +17,13 @@ public class AudioManager : MonoBehaviour
     AudioSource[] sfxPlayer;
     int ChannelIndex;
 
-    private void Awake()
-    {
-        
-        Instance = this;
-        Init();
-    }
 
-    void Init()
-    { 
-    
+    void init()
+    {
+        GameObject bgmObject = new GameObject("BgmPlayer");
+        bgmObject.transform.parent = transform;
+        bgmPlayer = bgmObject.AddComponent<AudioSource>();
         
-    
     
     }
 
