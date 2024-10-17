@@ -9,7 +9,7 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] private Transform projectileSpawnPosition; // 총알 발사 위치
 
     // TODO :: 테스트용 프리팹 교체
-    public GameObject TestPrefab; 
+    public GameObject PlayerBullet; 
 
 
     private void Awake()
@@ -30,6 +30,6 @@ public class PlayerShooting : MonoBehaviour
     private void CreateProjectile()
     {
         // 투사체(총알)이 스폰 포인트에서 회전 없이 생성됨
-        Instantiate(TestPrefab, projectileSpawnPosition.position, Quaternion.identity); 
+        Instantiate(PlayerBullet, projectileSpawnPosition.position, Quaternion.identity); 
     }
 }
