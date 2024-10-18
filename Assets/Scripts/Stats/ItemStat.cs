@@ -11,14 +11,21 @@ public enum ItemType
 public class ItemStat : MonoBehaviour
 {
     public ItemType itemType; // 아이템 종류 설정
-    public int value = 10;    // 회복 또는 증가할 값
+    public int health = 1;    // 회복 
+    public float speed = 2; // 공격 스피드 증가 배율
 
-    private void OnTriggerEnter2D(Collider2D other)
+    public void ApplyItemEffect(HealthSystem healthSystem, PlayerStatHandler statHandler) // 효과 적용
     {
-        if (other.CompareTag("Player"))
+        switch (itemType)
         {
-            // 플레이어와 충돌한 경우, 아이템 효과 적용
+            case ItemType.Health:
+                healthSystem.ChangeHealth(health); // 체력 회복
+                break;
 
-        }    
+            case ItemType.Speed:
+                statHandler.ChangeSpeedStat(speed, 5f); // 속도 증가, 5초 동안 지속됨
+                break;
+        }
     }
+
 }

@@ -119,7 +119,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f17e25203e59a444a966e3a7e71d2a5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spaceshipSpeed: 5
 --- !u!114 &8425229922136818893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,9 +146,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseStats:
-    statsChangeType: 0
     maxHealth: 0
-    speed: 0
+    speed: 5
     playerSO: {fileID: 11400000, guid: 368e75a02bb365e49b956bdc56369b73, type: 2}
   statModifiers: []
 --- !u!1 &3580918381625824220
