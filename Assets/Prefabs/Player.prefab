@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 3659959913032112606}
   - component: {fileID: 4320246798659556098}
   - component: {fileID: 3202263197664295184}
+  - component: {fileID: -6030336130101236673}
   - component: {fileID: 5311043452176905584}
   - component: {fileID: 8425229922136818893}
-  - component: {fileID: 6050874439230166417}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -107,6 +107,24 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &-6030336130101236673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 98032459230036850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eef8456257ee73f47915b23a92fb58be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseStats:
+    statsChangeType: 0
+    maxHealth: 0
+    speed: 0
+    playerSO: {fileID: 11400000, guid: 368e75a02bb365e49b956bdc56369b73, type: 2}
+  statModifiers: []
 --- !u!114 &5311043452176905584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,24 +152,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpawnPosition: {fileID: 3700510920390822517}
   PlayerBullet: {fileID: 8046301987979651682, guid: ee9cb767c19f3f94bae4c58b044a76e9, type: 3}
---- !u!114 &6050874439230166417
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 98032459230036850}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eef8456257ee73f47915b23a92fb58be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseStats:
-    statsChangeType: 0
-    maxHealth: 0
-    speed: 0
-    playerSO: {fileID: 11400000, guid: 368e75a02bb365e49b956bdc56369b73, type: 2}
-  statModifiers: []
 --- !u!1 &3580918381625824220
 GameObject:
   m_ObjectHideFlags: 0
