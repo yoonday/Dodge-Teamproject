@@ -6,9 +6,8 @@ public class EnemyShooting : MonoBehaviour
 {
     [SerializeField] private Transform projectileSpawnPosition;
     [SerializeField] private GameObject projectilePrefab;
-    [SerializeField] private EnemyAttackSO enemyAttackSO;
 
-    private DodgeController controller;
+    private DodgeEnemyController controller;
     private EnemyAttackSO enemyAttack;
 
     private readonly float distance_Straight = 0.5f;
@@ -16,13 +15,13 @@ public class EnemyShooting : MonoBehaviour
 
     private void Awake()
     {
-        controller = GetComponent<DodgeController>();
-        enemyAttack = (controller as DodgeEnemyController).EnemyAttack;
+        controller = GetComponent<DodgeEnemyController>();
     }
 
     void Start()
     {
         controller.OnAttackEvent += StartAttackCoroutine;
+        enemyAttack = controller.EnemyAttack;
     }
 
     private void StartAttackCoroutine()
@@ -47,14 +46,14 @@ public class EnemyShooting : MonoBehaviour
                 var projectile = Instantiate(projectilePrefab, spawnPosition, Quaternion.identity);
 
                 projectile.transform.rotation = transform.rotation;
-                projectile.GetComponent<EnemyProjectileController>().Init(transform.TransformDirection(Vector2.up).normalized, enemyAttackSO);
+                projectile.GetComponent<EnemyProjectileController>().Init(transform.TransformDirection(Vector2.up).normalized, enemyAttack);
             }
 
         }
         else
         {
-            float startTheta = (180 - enemyAttackSO.angleDeg) / 2;
-            float theta = enemyAttackSO.angleDeg / (enemyAttackSO.amount - 1);
+            float startTheta = (180 - enemyAttack.angleDeg) / 2;
+            float theta = enemyAttack.angleDeg / (enemyAttack.amount - 1);
 
             for(int i = 0; i < enemyAttack.amount; i++)
             { 
@@ -66,13 +65,15 @@ public class EnemyShooting : MonoBehaviour
                 float cos = Mathf.Cos(curTheta * Mathf.Deg2Rad);
                 float sin = Mathf.Sin(curTheta * Mathf.Deg2Rad);
 
-                projectile.GetComponent<EnemyProjectileController>().Init(transform.TransformDirection(new(cos, sin)).normalized, enemyAttackSO);
+                projectile.GetComponent<EnemyProjectileController>().Init(transform.TransformDirection(new(cos, sin)).normalized, enemyAttack);
             }
         }
     }
 
     private IEnumerator AttackCoroutine()
-    {   
+    {
+        if (enemyAttack == null) yield break;
+
         for (int i = 0; i < enemyAttack.attackCountAtOnce; i++)
         {
             OnShot();
