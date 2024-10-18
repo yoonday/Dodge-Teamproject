@@ -8,7 +8,10 @@ public class AudioManager : Singleton<AudioManager>
     
     [Header("BGM")]
     public AudioClip bgmClip;
+
+    [Range(0f, 1f)]
     public float bgmVolume;
+
     AudioSource bgmPlayer;
     AudioHighPassFilter bgmEffect;
 
@@ -19,7 +22,7 @@ public class AudioManager : Singleton<AudioManager>
     AudioSource[] sfxPlayers;
     int channelIndex;
 
-    public enum Sfx {Hit, Fire = 2, Heal = 4, Death = 6, Select};
+    public enum Sfx {Hit, Fire, Item = 3, Death = 5, Select};
 
     public override void Awake()
     { 
