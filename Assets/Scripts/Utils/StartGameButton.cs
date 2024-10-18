@@ -6,6 +6,6 @@ public class StartGameButton : MonoBehaviour
 {
     public void StartGame()
     {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("Dodge_Project_Main");
     }
 }

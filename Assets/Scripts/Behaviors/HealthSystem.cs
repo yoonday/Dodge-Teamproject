@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class HealthSystem : MonoBehaviour
 {
-    [SerializeField] private PlayerStatHandler playerStatHandler; // 스탯을 HeathSystem에서 관리하는 것이 용이할 듯
+    private PlayerStatHandler playerStatHandler; // 스탯을 HeathSystem에서 관리하는 것이 용이할 듯
 
 
     public event Action OnDamage;
@@ -16,6 +16,11 @@ public class HealthSystem : MonoBehaviour
     private float timeSinceLastChange = float.MaxValue;
     public float CurrentHealth { get; private set; }
     private bool isAttacked = false; // 어디서 사용하는지?
+
+    private void Awake()
+    {
+        playerStatHandler = GetComponent<PlayerStatHandler>();
+    }
 
     private void Start()
     {
