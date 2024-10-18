@@ -12,10 +12,14 @@ public class EnemyAttackSO : ScriptableObject
     public float speed;
     public LayerMask target;
 
-    [Header("Attack Type Info")]
+    [Header("Attack Type Info (Amount Should be Bigger than 2)")]
     public Angle angle;
     public float angleDeg;
     public int amount;
+
+    [Header("Attack Time Info")]
+    public int attackCountAtOnce;
+    public float coolDuration;
 
     public enum Angle
     {
