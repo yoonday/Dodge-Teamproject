@@ -7,8 +7,8 @@ public class PlayerController : MonoBehaviour
 {
 
 
-    [SerializeField] private Vector3[] playerSpawnPoint;
     [SerializeField] private GameObject[] playerPrefab;
+    private Vector3[] playerSpawnPoint;
 
 
     private void OnSceneLoaed(Scene scene, LoadSceneMode mode)
