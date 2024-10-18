@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D movementRigidbody;
     private PlayerStatHandler playerStatHandler;
 
-    private Vector2 movementDirection = Vector2.zero; // 오류 방지 차원
+    private Vector2 movementDirection = Vector2.zero; // ?�류 방�? 차원
 
     private void Awake()
     {

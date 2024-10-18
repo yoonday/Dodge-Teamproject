@@ -18,8 +18,6 @@ public class PlayerUIController : DodgeUIController
     {
         base.Awake();
 
-
-
         health = GetComponent<HealthSystem>();
 
         playerName = GameObject.Find($"{gameObject.name}UI").GetComponent<TextMeshProUGUI>();
