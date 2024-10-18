@@ -123,38 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &71674963
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 71674964}
-  m_Layer: 0
-  m_Name: UIManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &71674964
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 71674963}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.02, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1949630769}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &246228914
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,7 +135,7 @@ GameObject:
   - component: {fileID: 246228917}
   - component: {fileID: 246228916}
   m_Layer: 5
-  m_Name: Life Icon (2)
+  m_Name: Life Icon 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1143,7 +1111,7 @@ RectTransform:
   - {fileID: 246228915}
   - {fileID: 2000113308}
   - {fileID: 1819043029}
-  m_Father: {fileID: 71674964}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1162,7 +1130,7 @@ GameObject:
   - component: {fileID: 1973679472}
   - component: {fileID: 1973679471}
   m_Layer: 5
-  m_Name: Life Icon (1)
+  m_Name: Life Icon 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1237,7 +1205,7 @@ GameObject:
   - component: {fileID: 2000113310}
   - component: {fileID: 2000113309}
   m_Layer: 5
-  m_Name: ScroeText
+  m_Name: Scroe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1312,4 +1280,4 @@ SceneRoots:
   - {fileID: 619394802}
   - {fileID: 1647249612}
   - {fileID: 1540074595}
-  - {fileID: 71674964}
+  - {fileID: 1949630769}
