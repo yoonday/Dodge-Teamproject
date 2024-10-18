@@ -22,15 +22,15 @@ public class EnemyShooting : MonoBehaviour
 
     void Start()
     {
-        controller.OnAttackEvent += OnShoot;
+        controller.OnAttackEvent += StartAttackCoroutine;
     }
 
-    private void Update()
+    private void StartAttackCoroutine()
     {
-        OnShoot();
+        StartCoroutine(AttackCoroutine());
     }
 
-    private void OnShoot()
+    private void OnShot()
     {
         if (enemyAttack.angle == EnemyAttackSO.Angle.STRAIGHT)
         {
@@ -46,6 +46,7 @@ public class EnemyShooting : MonoBehaviour
 
                 var projectile = Instantiate(projectilePrefab, spawnPosition, Quaternion.identity);
 
+                projectile.transform.rotation = transform.rotation;
                 projectile.GetComponent<EnemyProjectileController>().Init(transform.TransformDirection(Vector2.up).normalized, enemyAttackSO);
             }
 
@@ -59,6 +60,8 @@ public class EnemyShooting : MonoBehaviour
             { 
                 var projectile = Instantiate(projectilePrefab, projectileSpawnPosition.position, Quaternion.identity);
 
+                projectile.transform.rotation = transform.rotation;
+
                 float curTheta = startTheta + (theta * i);
                 float cos = Mathf.Cos(curTheta * Mathf.Deg2Rad);
                 float sin = Mathf.Sin(curTheta * Mathf.Deg2Rad);
@@ -68,8 +71,12 @@ public class EnemyShooting : MonoBehaviour
         }
     }
 
-    private IEnumerator ShotCoroutine()
-    {
-        yield return null;
+    private IEnumerator AttackCoroutine()
+    {   
+        for (int i = 0; i < enemyAttack.attackCountAtOnce; i++)
+        {
+            OnShot();
+            yield return new WaitForSeconds(enemyAttack.delay);
+        }
     }
 }
