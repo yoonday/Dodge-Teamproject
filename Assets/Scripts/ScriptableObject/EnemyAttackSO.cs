@@ -16,10 +16,7 @@ public class EnemyAttackSO : ScriptableObject
     public Angle angle;
     public float angleDeg;
     public int amount;
-
-    [Header("Attack Time Info")]
     public int attackCountAtOnce;
-    public float coolDuration;
 
     public enum Angle
     {
