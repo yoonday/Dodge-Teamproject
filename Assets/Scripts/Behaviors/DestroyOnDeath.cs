@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DestroyOnDeath : MonoBehaviour
 {
+    [SerializeField] List<GameObject> items;
+
     private HealthSystem healthSystem;
 
     private void Start()
@@ -14,19 +16,9 @@ public class DestroyOnDeath : MonoBehaviour
 
     void OnDeath()
     {
-        /*
-         *      죽었을 때 아이템 생성되게.
-         *      적이 죽을 때 이펙트 반영?
-         *      
-         *      
-         *      아이템이 만들어지는 경우의 수
-         *      적이 죽었을 때
-         *      
-         *      ItemSpawner -> 아이템 생성 (랜덤)
-         *      
-         *      transform.position
-         */
+        int rand = Random.Range(0, items.Count);
 
+        Instantiate(items[rand], transform.position, Quaternion.identity);
 
         Destroy(gameObject);
     }
