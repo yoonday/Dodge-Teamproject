@@ -23,7 +23,7 @@ public class ItemStat : MonoBehaviour
                 break;
 
             case ItemType.Speed:
-                statHandler.ChangeSpeedStat(speed); // 속도 증가 
+                statHandler.ChangeSpeedStat(speed, 5f); // 속도 증가, 5초 동안 지속됨
                 break;
         }
     }
