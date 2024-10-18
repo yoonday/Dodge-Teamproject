@@ -8,6 +8,7 @@ public class PlayerCollisiontroller : MonoBehaviour
     
     [SerializeField] private HealthSystem healthSystem; // HealthSystem ÂüÁ¶
     [SerializeField] private PlayerStatHandler statHandler; // ½ºÅÈ ÂüÁ¶
+    [SerializeField] GameObject player;
 
 
     void OnCollisionEnter2D(Collision2D collision) // ÃÑ¾Ë
@@ -26,14 +27,11 @@ public class PlayerCollisiontroller : MonoBehaviour
                 ItemStat item = collision.gameObject.GetComponent<ItemStat>();
                 if (item != null)
                 {
-                    item.ApplyItemEffect(healthSystem, statHandler);
+                    item.ApplyItemEffect(healthSystem, statHandler, player);
                     Destroy(collision.gameObject);
                 }
                 break;
 
         }
-
     }
-
-    
 }
