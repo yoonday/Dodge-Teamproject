@@ -12,7 +12,7 @@ public class ItemStat : MonoBehaviour
 {
     public ItemType itemType; // 아이템 종류 설정
     public int health = 1;    // 회복 
-    public int speed = 10; // 스피드 증가
+    public float speed = 2; // 공격 스피드 증가 배율
 
     public void ApplyItemEffect(HealthSystem healthSystem, PlayerStatHandler statHandler) // 효과 적용
     {
@@ -23,7 +23,7 @@ public class ItemStat : MonoBehaviour
                 break;
 
             case ItemType.Speed:
-                statHandler.ChangeSpeedStat(speed); // 속도 증가
+                statHandler.ChangeSpeedStat(speed); // 속도 증가 
                 break;
         }
     }

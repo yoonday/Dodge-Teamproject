@@ -19,12 +19,12 @@ public class PlayerStatHandler : MonoBehaviour
     private void UpdateCharacterStat() // 스탯 업데이트
     {
         PlayerAttackSO playerSO = null;
-        if (baseStats.playerSO != null) // PlayerStat 초기화
+        if (baseStats.playerSO != null) // 공격 스탯 초기화
         {
             playerSO = Instantiate(baseStats.playerSO);
         }
 
-        // 현재 Stat
+        // 현재 플레이어 Stat
         CurrentStat = new PlayerStat { playerSO = playerSO };
         CurrentStat.maxHealth = baseStats.maxHealth;
         CurrentStat.speed = baseStats.speed;
@@ -33,7 +33,7 @@ public class PlayerStatHandler : MonoBehaviour
 
 
     // 스피드 2배로 증가
-    public void ChangeSpeedStat(int multiple)
+    public void ChangeSpeedStat(float multiple)  
     {
         CurrentStat.speed *= multiple;
     }
