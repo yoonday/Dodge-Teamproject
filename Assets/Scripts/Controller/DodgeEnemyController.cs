@@ -7,23 +7,34 @@ public class DodgeEnemyController : DodgeController
     [SerializeField][Range(0f, 10f)] private float enemySpeed;
     [SerializeField][Range(0f, 10f)] private float movingDuration;
     [SerializeField][Range(0f, 10f)] private float moveCooltime;
-    [SerializeField] Sprite enemySprite;
-    [SerializeField] private EnemyAttackSO enemyAttack;
 
     private float randomPosRangeXMin;
     private float randomPosRangeXMax;
     private float randomPosRangeYMin;
     private float randomPosRangeYMax;
 
-    Coroutine enemyCoroutine;
-
+    private EnemyAttackSO enemyAttack;
+    private Sprite enemySprite;
+    private Coroutine enemyCoroutine;
+    private PlayerStatHandler playerStatHandler;
 
     public float EnemySpeed { get { return enemySpeed; } }
     public EnemyAttackSO EnemyAttack { get { return enemyAttack; } }
 
-    public void Init(float enemySpeed)
+
+    protected override void Awake()
     {
-        this.enemySpeed = enemySpeed;
+        base.Awake();
+
+        enemySprite = GetComponentInChildren<SpriteRenderer>().sprite;
+        playerStatHandler = GetComponent<PlayerStatHandler>();
+    }
+
+    public void Init(int enemyHealth, EnemyAttackSO enemyAttack)
+    {
+        this.enemyAttack = enemyAttack;
+        playerStatHandler.CurrentStat.maxHealth = enemyHealth;
+        enemyCoroutine = StartCoroutine(EnemyCoroutine());
     }
 
     // Start is called before the first frame update
@@ -40,10 +51,6 @@ public class DodgeEnemyController : DodgeController
 
         randomPosRangeXMin = mainCamera.transform.position.x - cameraWidth + (enemySprite.bounds.size.x / 2); // È­¸é ¸Ç ¿ÞÂÊ ÁÂÇ¥.
         randomPosRangeXMax = mainCamera.transform.position.x + cameraWidth - (enemySprite.bounds.size.x / 2); // È­¸é ¸Ç ¿À¸¥ÂÊ ÁÂÇ¥.
-
-        enemyCoroutine = StartCoroutine(EnemyCoroutine());
-
-        CallAttackEvent();
     }
 
     protected override void Update() { }
@@ -56,18 +63,21 @@ public class DodgeEnemyController : DodgeController
 
     private IEnumerator EnemyCoroutine()
     {
-        yield return new WaitForSeconds(moveCooltime);
         while(true)
         {
             Vector2 randomDest = new(Random.Range(randomPosRangeXMin, randomPosRangeXMax), Random.Range(randomPosRangeYMin, randomPosRangeYMax));
             CallMoveEvent(randomDest);
 
-            yield return new WaitForSeconds(movingDuration);
+            if (randomDest != Vector2.zero)
+            {
+                yield return new WaitForSeconds(movingDuration);
 
-            CallMoveEvent(Vector2.zero);
-            CallAttackEvent();
+                CallMoveEvent(Vector2.zero);
+                CallAttackEvent();
 
-            yield return new WaitForSeconds(moveCooltime);
+                yield return new WaitForSeconds(moveCooltime);
+            }
+            else yield return null;
         }
     }
 }
