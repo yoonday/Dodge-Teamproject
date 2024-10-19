@@ -23,8 +23,8 @@ public class DodgeUIController : MonoBehaviour
     {
 
         // 이름 수정 필요
-        resultScreen = GameObject.Find("ResultUI").GetComponent<GameObject>();
-        score = GameObject.Find("GameScore").GetComponent<TextMeshProUGUI>();
+        resultScreen = GameObject.Find("Over Set").GetComponent<GameObject>();
+        score = GameObject.Find("Score").GetComponent<TextMeshProUGUI>();
         bestScore = GameObject.Find("GameBestScore").GetComponent<TextMeshProUGUI>();
 
     }
@@ -34,8 +34,8 @@ public class DodgeUIController : MonoBehaviour
         healthSystem = GetComponent<HealthSystem>();
 
 
-        if (PlayerPrefs.HasKey("이름 미정"))
-            InGameBestScore = PlayerPrefs.GetInt("이름 미정");
+        if (PlayerPrefs.HasKey("BestScore"))
+            InGameBestScore = PlayerPrefs.GetInt("BestScore");
 
     }
 

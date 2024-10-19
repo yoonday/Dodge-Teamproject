@@ -9,7 +9,6 @@ public class PlayerUIController : DodgeUIController
 {
 
     private HealthSystem health;
-    [SerializeField] private TextMeshProUGUI playerName;
     [SerializeField] private Image playerSkillimage;
     [SerializeField] private GameObject[] playerHealth;
 
@@ -20,7 +19,6 @@ public class PlayerUIController : DodgeUIController
 
         health = GetComponent<HealthSystem>();
 
-        playerName = GameObject.Find($"{gameObject.name}UI").GetComponent<TextMeshProUGUI>();
         playerSkillimage = GameObject.Find($"{gameObject.name}SkillIcon").GetComponent<Image>();
         playerHealth = GameObject.Find($"{gameObject.name}Health").GetComponentsInChildren<GameObject>();
         
@@ -63,7 +61,7 @@ public class PlayerUIController : DodgeUIController
         {
 
             InGameBestScore = currentScore;
-            PlayerPrefs.SetInt("이름 미정", InGameBestScore);
+            PlayerPrefs.SetInt("BestScore", InGameBestScore);
 
         }
 
