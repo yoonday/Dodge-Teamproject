@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseStats:
-    maxHealth: 0
+    maxHealth: 3
     speed: 5
     playerSO: {fileID: 11400000, guid: 368e75a02bb365e49b956bdc56369b73, type: 2}
   statModifiers: []
@@ -256,9 +256,10 @@ MonoBehaviour:
   score: {fileID: 0}
   bestScore: {fileID: 0}
   resultScreen: {fileID: 0}
-  playerName: {fileID: 0}
+  MaxHealth: 0
   playerSkillimage: {fileID: 0}
-  playerHealth: []
+  playerHealth: {fileID: 0}
+  playerHealthIcon: []
 --- !u!1 &3580918381625824220
 GameObject:
   m_ObjectHideFlags: 0

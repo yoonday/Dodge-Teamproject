@@ -20,6 +20,8 @@ public class PlayerUIController : DodgeUIController
     {
         base.Awake();
 
+        rename();
+
         playerSkillimage = GameObject.Find($"{gameObject.name}SkillIcon").GetComponent<Image>();
         playerHealth = GameObject.Find($"{gameObject.name}Health").GetComponent<Transform>();
         playerHealthIcon = new GameObject[playerHealth.childCount];
@@ -27,6 +29,14 @@ public class PlayerUIController : DodgeUIController
         HealthUIAssignment();
     }
 
+
+    private void rename()
+    {
+        int index = gameObject.name.IndexOf("(Clone)");
+        if (index > 0)
+            gameObject.name = gameObject.name.Substring(0, index);
+
+    }
 
     protected override void Start()
     {
@@ -75,11 +85,14 @@ public class PlayerUIController : DodgeUIController
     private void result()
     {
 
-        //GameManager.Instance.playerNum -= 1;
+        GameManager.Instance.playerNum -= 1;
 
         if (GameManager.Instance.playerNum != 0)
+        {
+            gameObject.SetActive(false);
             return;
-
+        }
+  
         resultScreen.gameObject.SetActive(true);
 
         if (GameManager.Instance.currentScore > GameManager.Instance.bestScore)
@@ -91,8 +104,9 @@ public class PlayerUIController : DodgeUIController
         }
 
         bestScore.text = $"Best Score : {GameManager.Instance.bestScore.ToString()}";
-
         gameObject.SetActive(false);
+
+        Time.timeScale = 0;
 
     }
 

@@ -45,6 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d56e76c889a2e144aee2e6ff3d2c94d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerNum: 1
+  currentScore: 0
+  bestScore: 0
 --- !u!114 &4240228090591348566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57,8 +60,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b72207aa8af9c034f8081b344fec9b63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpawnPoint: []
-  playerNum: 1
   playerPrefab:
-  - {fileID: 98032459230036850, guid: bbfe2365ef3ed7d4894a7a6fc66a68b6, type: 3}
-  - {fileID: 3524373873672617361, guid: bf34a03df15e5ba4a9e88f20d7ff0f42, type: 3}
+  - {fileID: 98032459230036850, guid: d0cda5392408bf543b5b5b7f08d7b139, type: 3}
+  - {fileID: 3524373873672617361, guid: 7ff5afe28d1585f47af3bc7d164bb984, type: 3}
