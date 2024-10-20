@@ -14,8 +14,8 @@ public class MonsterUIController : DodgeUIController
 
     private void PlayerGetScore()
     {
-
-        score.text = $"처치 수 : {currentScore.ToString()}";
+        GameManager.Instance.currentScore += 1;
+        score.text = $"처치 수 : {GameManager.Instance.currentScore.ToString()}";
 
     }
 
