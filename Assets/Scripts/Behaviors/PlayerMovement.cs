@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
     private void ApplyMovement(Vector2 direction)
     {
         float currentSpeed = playerStatHandler.CurrentStat.speed;
-        direction = direction * currentSpeed; // SpaceshipSpeed에서 아이템 적용 값으로 바꿈
+        direction = direction * currentSpeed; // SpaceshipSpeed?�서 ?�이???�용 값으�?바꿈
         movementRigidbody.velocity = direction;
     }
 }
