@@ -51,7 +51,8 @@ public class EnemySpawner : Singleton<EnemySpawner>
 
                 int currentLevelBoss = 5 * (currentLevel - 1) - 1;
 
-                enemySO = currentEnemies[currentLevelBoss];
+                Debug.Log(currentLevelBoss);
+                enemySO = enemyInfos[currentLevelBoss].enemyAttackSO;
             }
             else
             {

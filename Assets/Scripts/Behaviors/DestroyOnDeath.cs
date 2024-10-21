@@ -34,12 +34,12 @@ public class DestroyOnDeath : MonoBehaviour
 
         spawner.EnemyDestroyed(dodgeEnemyController.IsBoss);
 
-        animator.SetTrigger("isDeath");
         collider.enabled = false;
-
-        StartCoroutine(SetActiveFalseCoroutine());
+        animator.enabled = true;
 
         AudioManager.Instance.PlaySfx(AudioManager.Sfx.Death);
+
+        StartCoroutine(SetActiveFalseCoroutine());
     }
     
     private IEnumerator SetActiveFalseCoroutine()
