@@ -14,7 +14,7 @@ public class ItemStat : MonoBehaviour
 {
     public ItemType itemType; // 아이템 종류 설정
     public int health = 1;    // 회복 
-    public float speed = 2; // 공격 스피드 증가 배율
+    public float speed = 20; // 공격 스피드 증가 배율
 
     public void ApplyItemEffect(HealthSystem healthSystem, PlayerStatHandler statHandler, GameObject player) // 효과 적용
     {

@@ -33,12 +33,12 @@ public class PlayerStatHandler : MonoBehaviour
     }
 
 
-    public void ChangeSpeedStat(float multiple, float duration) // 속도 변경
+    public void ChangeSpeedStat(float increasedSpeed, float duration) // 속도 변경
     {
-        float originalSpeed = CurrentStat.speed; // 기본 스피드 값 저장
+        float originalSpeed = baseStats.speed; // 기본 스피드 값 저장
 
         // 아이템 스탯 적용
-        CurrentStat.speed *= multiple;
+        CurrentStat.speed = increasedSpeed;
         Debug.Log("변경된 속도 확인: " + CurrentStat.speed);
 
         // 코루틴 사용 : 일정 시간 후 원래 속도로 돌아감
