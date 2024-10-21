@@ -6,17 +6,19 @@ using UnityEngine;
 public class EnemyAttackSO : PlayerAttackSO
 {
     [Header("Attack Type Info (Amount Should be Bigger than 2)")]
-    public Angle angle;
+    public AttackType angle;
     public float angleDeg;
     public int amount;
     public int attackCountAtOnce;
+    public float spreadDelay;
 
     [Header("Enemy Stat")]
     public int enemyHealth;
 
-    public enum Angle
+    public enum AttackType
     {
         STRAIGHT,
-        ANGLED
+        ANGLED,
+        SPREAD
     }
 }
