@@ -44,4 +44,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c334f02a43df35e429bff4908a0f1bfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Pools: []
+  Pools:
+  - tag: Enemy
+    prefab: {fileID: 9079765395263770696, guid: 0a9fa00a9ea45ab4e86dea2ab6380eb2, type: 3}
+    size: 20
+  - tag: EnemyBullet
+    prefab: {fileID: 8046301987979651682, guid: 7c10f9d82800a0d4cbf3159e9fdb3e16, type: 3}
+    size: 100
+  - tag: PlayerBullet
+    prefab: {fileID: 8046301987979651682, guid: ee9cb767c19f3f94bae4c58b044a76e9, type: 3}
+    size: 100
