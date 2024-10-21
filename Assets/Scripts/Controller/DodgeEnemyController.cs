@@ -14,7 +14,7 @@ public class DodgeEnemyController : DodgeController
     private float randomPosRangeYMax;
 
     private EnemyAttackSO enemyAttack;
-    private Sprite enemySprite;
+    private SpriteRenderer enemySprite;
     private Coroutine enemyCoroutine;
     private PlayerStatHandler playerStatHandler;
 
@@ -26,21 +26,20 @@ public class DodgeEnemyController : DodgeController
     {
         base.Awake();
 
-        enemySprite = GetComponentInChildren<SpriteRenderer>().sprite;
+        enemySprite = GetComponentInChildren<SpriteRenderer>();
         playerStatHandler = GetComponent<PlayerStatHandler>();
     }
 
     public void Init(int enemyHealth, EnemyAttackSO enemyAttack)
     {
         this.enemyAttack = enemyAttack;
-        playerStatHandler.CurrentStat.maxHealth = enemyHealth;
-        enemyCoroutine = StartCoroutine(EnemyCoroutine());
-    }
 
-    // Start is called before the first frame update
-    void Start()
-    {
+        playerStatHandler.CurrentStat.maxHealth = enemyHealth;
+        enemySprite.sprite = EnemyAttack.enemySprite;
+
         SetRange();
+
+        enemyCoroutine = StartCoroutine(EnemyCoroutine());
     }
 
     protected override void Update() { }
@@ -74,7 +73,7 @@ public class DodgeEnemyController : DodgeController
     private void SetRange()
     {
         Camera mainCamera = Camera.main;
-        enemySprite = transform.GetComponentInChildren<SpriteRenderer>().sprite;
+        var sprite = enemySprite.sprite;
 
         float cameraHeight = mainCamera.orthographicSize;
         float cameraWidth = cameraHeight * ((float)Screen.width / Screen.height);
