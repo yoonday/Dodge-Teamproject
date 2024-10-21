@@ -19,7 +19,8 @@ public class DodgeEnemyController : DodgeController
     private HealthSystem health;
     private PlayerStatHandler handler;
     private Animator animator;
-
+    private Collider2D collider;
+    private EnemyShooting shooting;
     
 
     public bool IsBoss { get; private set; }
@@ -35,18 +36,26 @@ public class DodgeEnemyController : DodgeController
         health = GetComponent<HealthSystem>();
         handler = GetComponent<PlayerStatHandler>();
         animator = GetComponentInChildren<Animator>();
+        collider = GetComponent<Collider2D>();
+        shooting = GetComponent<EnemyShooting>();
     }
 
     public void Init(EnemyAttackSO enemyAttack)
     {
         this.enemyAttack = enemyAttack;
 
+        collider.enabled = true;
         health.InitHealth(enemyAttack.enemyHealth);
         handler.CurrentStat.maxHealth = enemyAttack.enemyHealth;
         enemySprite.sprite = EnemyAttack.enemySprite;
+
+
         animator.runtimeAnimatorController = enemyAttack.enemyAnimatorController;
         animator.enabled = true;
+        enemySprite.sprite = EnemyAttack.enemySprite;
         IsBoss = enemyAttack.isBoss;
+
+        shooting.EnemyShootingInit();
 
         SetRange();
 

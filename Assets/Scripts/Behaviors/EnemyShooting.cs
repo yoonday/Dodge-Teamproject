@@ -21,6 +21,10 @@ public class EnemyShooting : MonoBehaviour
     void Start()
     {
         controller.OnAttackEvent += StartAttackCoroutine;
+    }
+
+    public void EnemyShootingInit()
+    {
         enemyAttack = controller.EnemyAttack;
     }
 

@@ -11,6 +11,7 @@ public class DestroyOnDeath : MonoBehaviour
     private EnemySpawner spawner;
     private Animator animator;
     private DodgeEnemyController dodgeEnemyController;
+    private Collider2D collider;
 
     private void Start()
     {
@@ -20,6 +21,7 @@ public class DestroyOnDeath : MonoBehaviour
         spawner = EnemySpawner.Instance;
         animator = GetComponentInChildren<Animator>();
         dodgeEnemyController = GetComponent<DodgeEnemyController>();
+        collider = GetComponent<Collider2D>();
     }
 
     void OnDeath()
@@ -33,7 +35,7 @@ public class DestroyOnDeath : MonoBehaviour
         spawner.EnemyDestroyed(dodgeEnemyController.IsBoss);
 
         animator.SetTrigger("isDeath");
-        healthSystem.OnDeath -= OnDeath;
+        collider.enabled = false;
 
         StartCoroutine(SetActiveFalseCoroutine());
     }
