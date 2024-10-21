@@ -22,6 +22,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "ItemUse",
+                    "type": "Value",
+                    "id": "c5dcbc12-e919-44e3-a605-fb0422f46bda",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -90,6 +99,17 @@
                     "action": "Fire",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5f0bc6dd-a900-4fdb-be66-49b065731876",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ItemUse",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -110,6 +130,15 @@
                     "name": "Fire",
                     "type": "Value",
                     "id": "8631d510-6adf-480a-b802-5bffb4c556f6",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "ItemUse",
+                    "type": "Value",
+                    "id": "3fdffbe2-7f13-4fb5-b440-b5350d6657aa",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -180,6 +209,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d7ce894a-5f62-4c92-b9c3-646fd0c0bb68",
+                    "path": "<Keyboard>/numpad0",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ItemUse",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

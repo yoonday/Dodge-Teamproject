@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerCollisiontroller : MonoBehaviour
@@ -9,8 +6,15 @@ public class PlayerCollisiontroller : MonoBehaviour
     [SerializeField] private HealthSystem healthSystem; // HealthSystem ÂüÁ¶
     [SerializeField] private PlayerStatHandler statHandler; // ½ºÅÈ ÂüÁ¶
     [SerializeField] GameObject player;
+    ItemUIController itemUIController;
+    
 
+    public void Awake()
+    {
+        itemUIController = GetComponent<ItemUIController>();
+    }
 
+    
     void OnCollisionEnter2D(Collision2D collision) // ÃÑ¾Ë
     {
         string tag = collision.gameObject.tag;
@@ -35,8 +39,27 @@ public class PlayerCollisiontroller : MonoBehaviour
                 AudioManager.Instance.PlaySfx(AudioManager.Sfx.Item);
 
                 ItemStat item = collision.gameObject.GetComponent<ItemStat>();
+
                 if (item != null)
                 {
+
+                    if (item.itemType == ItemType.Speed && itemUIController.isHideSkill == false && itemUIController.playerShieldSystem.canActivateShield == false )
+                    {
+
+
+                        itemUIController.playerSkillimage.sprite = collision.gameObject.GetComponentInChildren<SpriteRenderer>().sprite;
+                        itemUIController.skillTimes = item.ItemDuration;
+                        itemUIController.HideSkillSetting();
+               
+                    }
+
+                    else if (item.itemType == ItemType.Shield && itemUIController.isHideSkill == false && itemUIController.playerShieldSystem.canActivateShield == false)
+                    {
+                        itemUIController.playerSkillimage.sprite = collision.gameObject.GetComponentInChildren<SpriteRenderer>().sprite;
+             
+                    }
+
+
                     item.ApplyItemEffect(healthSystem, statHandler, player);
                     Destroy(collision.gameObject);
                 }

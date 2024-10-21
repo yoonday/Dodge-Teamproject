@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: -1260652607296305418}
   - component: {fileID: -6363877621971426529}
   - component: {fileID: 4433857612113864993}
+  - component: {fileID: -2225821426627138708}
   m_Layer: 7
   m_Name: Player1
   m_TagString: Untagged
@@ -245,6 +246,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shieldPrefab: {fileID: 5935921119638530796, guid: ce5bc7edee0c7ae4d9a67a1770e38d78, type: 3}
   shieldDuration: 5
+  canActivateShield: 0
 --- !u!114 &4433857612113864993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -261,9 +263,26 @@ MonoBehaviour:
   bestScore: {fileID: 0}
   resultScreen: {fileID: 0}
   MaxHealth: 0
-  playerSkillimage: {fileID: 0}
   playerHealth: {fileID: 0}
   playerHealthIcon: []
+--- !u!114 &-2225821426627138708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 98032459230036850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 582695a191d65514b8a385d99f27223d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerShieldSystem: {fileID: 0}
+  playerSkillimage: {fileID: 0}
+  itemTimesText: {fileID: 0}
+  hideSkillImage: {fileID: 0}
+  skillTimes: 0
+  isHideSkill: 0
 --- !u!1 &3580918381625824220
 GameObject:
   m_ObjectHideFlags: 0

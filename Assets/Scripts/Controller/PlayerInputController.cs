@@ -24,4 +24,12 @@ public class PlayerInputController : DodgeController
     {
         isAttacking = value.isPressed;  
     }
+
+
+    public void OnItemUse()
+    {
+
+        CallItemEvent();
+    }
+
 }

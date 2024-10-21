@@ -15,6 +15,8 @@ public class ItemStat : MonoBehaviour
     public ItemType itemType; // 아이템 종류 설정
     public int health = 1;    // 회복 
     public float speed = 20; // 공격 스피드 증가 배율
+    public float ItemDuration = 5f;
+
 
     public void ApplyItemEffect(HealthSystem healthSystem, PlayerStatHandler statHandler, GameObject player) // 효과 적용
     {
@@ -25,14 +27,17 @@ public class ItemStat : MonoBehaviour
                 break;
 
             case ItemType.Speed:
-                statHandler.ChangeSpeedStat(speed, 5f); // 속도 증가, 5초 동안 지속됨
+                statHandler.ChangeSpeedStat(speed, ItemDuration); // 속도 증가, 5초 동안 지속됨
+              
                 break;
 
             case ItemType.Shield:
                 PlayerShieldSystem shieldController = player.GetComponent<PlayerShieldSystem>();
                 if (shieldController != null)
                 {
+
                     shieldController.SetShieldReady(); // 방어막 활성화 요청
+
                 }
                 break;
 

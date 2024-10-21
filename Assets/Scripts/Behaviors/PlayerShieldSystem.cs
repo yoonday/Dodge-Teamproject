@@ -4,19 +4,13 @@ using UnityEngine;
 
 public class PlayerShieldSystem : MonoBehaviour
 {
+
     public GameObject shieldPrefab; // 방어막 프리팹
     private GameObject activeShield; // 활성화할 방어막
     public float shieldDuration = 5f; // 방어막 지속 시간
-    private bool canActivateShield = false; // 방어막 활성화 가능 여부(아이템 먹었는지)
+    public bool canActivateShield = false; // 방어막 활성화 가능 여부(아이템 먹었는지)
 
-    void Update()
-    {
-        // R 버튼으로 방어막 활성화 (아이템 먹은 경우에만)
-        if (Input.GetKeyDown(KeyCode.R) && activeShield == null && canActivateShield)
-        {
-            ActivateShield();
-        }
-    }
+   
 
     public void SetShieldReady() // 아이템 먹으면 이 함수 호출
     {
@@ -37,6 +31,7 @@ public class PlayerShieldSystem : MonoBehaviour
             Invoke("DeactivateShield", shieldDuration);
 
             canActivateShield = false;
+
         }
     }
 

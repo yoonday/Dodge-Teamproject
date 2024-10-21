@@ -11,7 +11,7 @@ public class PlayerUIController : DodgeUIController
     private HealthSystem health;
     public int MaxHealth;
 
-    [SerializeField] private Image playerSkillimage;
+
     [SerializeField] private Transform playerHealth;
     [SerializeField] private GameObject[] playerHealthIcon;
 
@@ -23,7 +23,7 @@ public class PlayerUIController : DodgeUIController
         rename();
 
         GameObject.Find("UI").transform.Find($"{gameObject.name}UI").gameObject.SetActive(true);
-        playerSkillimage = GameObject.Find($"{gameObject.name}SkillIcon").transform.GetChild(0).GetComponent<Image>();
+
         playerHealth = GameObject.Find($"{gameObject.name}Health").GetComponent<Transform>();
         playerHealthIcon = new GameObject[playerHealth.childCount];
 

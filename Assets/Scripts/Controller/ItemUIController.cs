@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,23 +7,43 @@ using UnityEngine.UI;
 public class ItemUIController : MonoBehaviour
 {
 
-    private PlayerUIController playerUIController;
-    public GameObject hideItemIcon;
-    public GameObject showItemIcon;
+    private DodgeController controller;
+    public PlayerShieldSystem playerShieldSystem;
+
+    public Image playerSkillimage;
     public Text itemTimesText;
     public Image hideSkillImage;
     public float skillTimes;
-    private bool isHideSkill;
+    public bool isHideSkill = false;
     private int itemTimes;
     private float getSkillTimes;
 
 
-    public void Start()
+    protected virtual void Awake()
     {
+        controller = GetComponent<DodgeController>();
+        playerShieldSystem = GetComponent<PlayerShieldSystem>();
 
-        playerUIController = GetComponent<PlayerUIController>();
-        
-        
+        playerSkillimage = GameObject.Find($"{gameObject.name}SkillIcon").transform.GetChild(0).GetComponent<Image>();
+        hideSkillImage = GameObject.Find($"{gameObject.name}SkillIcon").transform.GetChild(1).GetComponent<Image>();
+        itemTimesText = GameObject.Find($"{gameObject.name}SkillIcon").transform.GetChild(2).GetComponent<Text>();
+
+    }
+
+    private void Update()
+    {
+        HideSkillChk();
+
+    }
+
+
+    public void HideSkillSetting()
+    {
+        hideSkillImage.gameObject.SetActive(true);
+        itemTimesText.gameObject.SetActive(true);
+        getSkillTimes = skillTimes;  
+       
+        isHideSkill = true;
 
     }
 
@@ -50,11 +71,14 @@ public class ItemUIController : MonoBehaviour
 
             if (getSkillTimes < 0)
             {
+                playerSkillimage.sprite = null;
+                hideSkillImage.gameObject.SetActive(false);
+                itemTimesText.gameObject.SetActive(false);
+                isHideSkill = false;
 
-                hideItemIcon.SetActive(false);
             }
 
-            itemTimesText.text = getSkillTimes.ToString("00");
+            itemTimesText.text = getSkillTimes.ToString("0");
 
             float time = getSkillTimes / skillTimes;
             hideSkillImage.fillAmount = time;
@@ -62,5 +86,23 @@ public class ItemUIController : MonoBehaviour
     
     }
 
+ 
+
+    void Start()
+    {
+        controller.OnItemEvent += OnUse;
+    }
+
+
+    private void OnUse()
+    {
+
+        if (playerShieldSystem.canActivateShield)
+        {
+            playerShieldSystem.ActivateShield();
+            HideSkillSetting();
+
+        }
+    }
 
 }
