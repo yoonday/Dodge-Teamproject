@@ -22,7 +22,7 @@ public class DodgeUIController : MonoBehaviour
    
         // 이름 수정 필요
         resultScreen = GameObject.Find("Canvas (1)").transform.GetChild(1).gameObject;
-        score = GameObject.Find("Scroe").GetComponent<Text>();
+        score = GameObject.Find("Score").GetComponent<Text>();
         bestScore = resultScreen.transform.Find("BestScore").GetComponent<Text>();
 
     }
