@@ -4,26 +4,30 @@ using UnityEngine;
 
 public class ProjectileController : MonoBehaviour
 {
+    private float screenTopMax;
 
-    [SerializeField] private float bulletRange = 20f;
+    void Start()
+    {
+        SetRange();
+    }
 
     void Update()
     {
         transform.position += Vector3.up * 0.2f;
 
-        if (transform.position.y > bulletRange)
+        if (transform.position.y > screenTopMax)
         {
             Destroy(gameObject);
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    private void SetRange()
     {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            Destroy(collision.gameObject);
-            Destroy(gameObject);
-        }
+        Camera mainCamera = Camera.main;
+
+        float cameraHeight = mainCamera.orthographicSize;
+
+        screenTopMax = mainCamera.transform.position.y + cameraHeight; // 화면 맨 위 좌표.
     }
 }
 

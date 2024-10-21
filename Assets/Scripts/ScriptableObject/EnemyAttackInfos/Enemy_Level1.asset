@@ -19,8 +19,9 @@ MonoBehaviour:
   target:
     serializedVersion: 2
     m_Bits: 0
-  angle: 1
-  angleDeg: 360
-  amount: 12
+  angle: 2
+  angleDeg: 70
+  amount: 5
   attackCountAtOnce: 2
-  enemyHealth: 0
+  spreadDelay: 0.1
+  enemyHealth: 1
