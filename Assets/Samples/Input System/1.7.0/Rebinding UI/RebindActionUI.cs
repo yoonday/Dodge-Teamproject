@@ -218,6 +218,8 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
             if (!ResolveActionAndBinding(out var action, out var bindingIndex))
                 return;
 
+            ResetBinding(action, bindingIndex);
+
             //if (action.bindings[bindingIndex].isComposite)
             //{
             //    // It's a composite. Remove overrides from part bindings.
