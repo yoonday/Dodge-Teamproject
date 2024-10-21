@@ -1368,6 +1368,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1822630220}
   m_CullTransparentMesh: 1
+--- !u!1 &1923457979 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5241336415743416865, guid: 75b4fd23ed9ca734da0311c5f53f9d76, type: 3}
+  m_PrefabInstance: {fileID: 1990786434}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1923457983
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923457979}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a85d1ddcccba44760b482355fb86f25b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1990786434
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1380,13 +1406,13 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 736565242}
-    - target: {fileID: 3673988421746246279, guid: 75b4fd23ed9ca734da0311c5f53f9d76, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: MultiplayCheck
-      objectReference: {fileID: 0}
     - target: {fileID: 5956382448953556848, guid: 75b4fd23ed9ca734da0311c5f53f9d76, type: 3}
       propertyPath: m_Name
       value: MainCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528000547360624030, guid: 75b4fd23ed9ca734da0311c5f53f9d76, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 217
       objectReference: {fileID: 0}
     - target: {fileID: 7282528391372033772, guid: 75b4fd23ed9ca734da0311c5f53f9d76, type: 3}
       propertyPath: m_Pivot.x
@@ -1468,18 +1494,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8049881984265276886, guid: 75b4fd23ed9ca734da0311c5f53f9d76, type: 3}
+      propertyPath: m_Text
+      value: Dodgepunk 2077
+      objectReference: {fileID: 0}
+    - target: {fileID: 8049881984265276886, guid: 75b4fd23ed9ca734da0311c5f53f9d76, type: 3}
+      propertyPath: m_Color.b
+      value: 0.7207546
+      objectReference: {fileID: 0}
+    - target: {fileID: 8049881984265276886, guid: 75b4fd23ed9ca734da0311c5f53f9d76, type: 3}
+      propertyPath: m_Color.g
+      value: 0.7207546
+      objectReference: {fileID: 0}
+    - target: {fileID: 8049881984265276886, guid: 75b4fd23ed9ca734da0311c5f53f9d76, type: 3}
+      propertyPath: m_Color.r
+      value: 0.7207546
+      objectReference: {fileID: 0}
     - target: {fileID: 8360251814967088927, guid: 75b4fd23ed9ca734da0311c5f53f9d76, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 736565242}
-    - target: {fileID: 8360251814967088927, guid: 75b4fd23ed9ca734da0311c5f53f9d76, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: MultiplayCheck
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5241336415743416865, guid: 75b4fd23ed9ca734da0311c5f53f9d76, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1923457983}
   m_SourcePrefab: {fileID: 100100000, guid: 75b4fd23ed9ca734da0311c5f53f9d76, type: 3}
 --- !u!1 &2106217527
 GameObject:

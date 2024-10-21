@@ -8,4 +8,9 @@ public class StartGameButton : MonoBehaviour
     {
         SceneManager.LoadScene("Dodge_Project_Main");
     }
+
+    public void ReturnStartMain()
+    {
+        SceneManager.LoadScene("Dodge_Project_Start");
+    }
 }
