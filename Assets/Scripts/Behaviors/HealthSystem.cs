@@ -39,7 +39,8 @@ public class HealthSystem : MonoBehaviour
     {
 
         CurrentHealth += change; // 체력에 값 변화
-        Debug.Log(CurrentHealth + " " + change);
+
+        CurrentHealth = Mathf.Clamp(CurrentHealth, 0, playerStatHandler.CurrentStat.maxHealth);
 
         if (CurrentHealth <= 0)
         {
@@ -74,8 +75,6 @@ public class HealthSystem : MonoBehaviour
     public void InitHealth(int maxHealth)
     {
         CurrentHealth = maxHealth;
-
-        Debug.Log(CurrentHealth);
     }    
 
 
