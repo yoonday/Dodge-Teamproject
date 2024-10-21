@@ -135,6 +135,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: PoolManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6593892142418331232, guid: 749952aef896e434ab05fa5fe371b4ae, type: 3}
+      propertyPath: Pools.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6593892142418331232, guid: 749952aef896e434ab05fa5fe371b4ae, type: 3}
+      propertyPath: Pools.Array.data[0].tag
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 6593892142418331232, guid: 749952aef896e434ab05fa5fe371b4ae, type: 3}
+      propertyPath: Pools.Array.data[1].tag
+      value: EnemyBullet
+      objectReference: {fileID: 0}
+    - target: {fileID: 6593892142418331232, guid: 749952aef896e434ab05fa5fe371b4ae, type: 3}
+      propertyPath: Pools.Array.data[2].tag
+      value: PlayerBullet
+      objectReference: {fileID: 0}
+    - target: {fileID: 6593892142418331232, guid: 749952aef896e434ab05fa5fe371b4ae, type: 3}
+      propertyPath: Pools.Array.data[3].tag
+      value: Items
+      objectReference: {fileID: 0}
+    - target: {fileID: 6593892142418331232, guid: 749952aef896e434ab05fa5fe371b4ae, type: 3}
+      propertyPath: Pools.Array.data[0].prefab
+      value: 
+      objectReference: {fileID: 9079765395263770696, guid: 0a9fa00a9ea45ab4e86dea2ab6380eb2, type: 3}
+    - target: {fileID: 6593892142418331232, guid: 749952aef896e434ab05fa5fe371b4ae, type: 3}
+      propertyPath: Pools.Array.data[1].prefab
+      value: 
+      objectReference: {fileID: 8046301987979651682, guid: 7c10f9d82800a0d4cbf3159e9fdb3e16, type: 3}
+    - target: {fileID: 6593892142418331232, guid: 749952aef896e434ab05fa5fe371b4ae, type: 3}
+      propertyPath: Pools.Array.data[2].prefab
+      value: 
+      objectReference: {fileID: 8046301987979651682, guid: ee9cb767c19f3f94bae4c58b044a76e9, type: 3}
     - target: {fileID: 8798088500849050469, guid: 749952aef896e434ab05fa5fe371b4ae, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
