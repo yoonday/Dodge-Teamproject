@@ -16,8 +16,13 @@ public class DodgeEnemyController : DodgeController
     private EnemyAttackSO enemyAttack;
     private SpriteRenderer enemySprite;
     private Coroutine enemyCoroutine;
-    private PlayerStatHandler playerStatHandler;
+    private HealthSystem health;
+    private PlayerStatHandler handler;
+    private Animator animator;
 
+    
+
+    public bool IsBoss { get; private set; }
     public float EnemySpeed { get { return enemySpeed; } }
     public EnemyAttackSO EnemyAttack { get { return enemyAttack; } }
 
@@ -27,19 +32,31 @@ public class DodgeEnemyController : DodgeController
         base.Awake();
 
         enemySprite = GetComponentInChildren<SpriteRenderer>();
-        playerStatHandler = GetComponent<PlayerStatHandler>();
+        health = GetComponent<HealthSystem>();
+        handler = GetComponent<PlayerStatHandler>();
+        animator = GetComponentInChildren<Animator>();
     }
 
-    public void Init(int enemyHealth, EnemyAttackSO enemyAttack)
+    public void Init(EnemyAttackSO enemyAttack)
     {
         this.enemyAttack = enemyAttack;
 
-        playerStatHandler.CurrentStat.maxHealth = enemyHealth;
+        health.InitHealth(enemyAttack.enemyHealth);
+        handler.CurrentStat.maxHealth = enemyAttack.enemyHealth;
         enemySprite.sprite = EnemyAttack.enemySprite;
+        animator.runtimeAnimatorController = enemyAttack.enemyAnimatorController;
+        IsBoss = enemyAttack.isBoss;
 
         SetRange();
 
-        enemyCoroutine = StartCoroutine(EnemyCoroutine());
+        if(enemyAttack.isBoss)
+        {
+            enemyCoroutine = StartCoroutine(EnemyAttackingCoroutine());
+        }
+        else
+        {
+            enemyCoroutine = StartCoroutine(EnemyMovingAndAttackingCoroutine());
+        }
     }
 
     protected override void Update() { }
@@ -50,10 +67,12 @@ public class DodgeEnemyController : DodgeController
         CallMoveEvent(Vector2.zero);
     }
 
-    private IEnumerator EnemyCoroutine()
+    private IEnumerator EnemyMovingAndAttackingCoroutine()
     {
         while(true)
         {
+            yield return new WaitForSeconds(moveCooltime);
+
             Vector2 randomDest = new(Random.Range(randomPosRangeXMin, randomPosRangeXMax), Random.Range(randomPosRangeYMin, randomPosRangeYMax));
             CallMoveEvent(randomDest);
 
@@ -63,10 +82,26 @@ public class DodgeEnemyController : DodgeController
 
                 CallMoveEvent(Vector2.zero);
                 CallAttackEvent();
-
-                yield return new WaitForSeconds(moveCooltime);
             }
             else yield return null;
+        }
+    }
+
+    private IEnumerator EnemyAttackingCoroutine()
+    {
+        yield return new WaitForSeconds(moveCooltime);
+
+        Vector2 centerVec = Vector3.Lerp(new(randomPosRangeXMin, randomPosRangeYMin), new(randomPosRangeXMax, randomPosRangeYMax), 0.5f);
+        CallMoveEvent(centerVec);
+
+        while (true)
+        {
+            yield return new WaitForSeconds(moveCooltime);
+
+            CallAttackEvent();
+
+            yield return new WaitForSeconds(moveCooltime);
+
         }
     }
 
