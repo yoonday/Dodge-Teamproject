@@ -7,11 +7,14 @@ public class DestroyOnDeath : MonoBehaviour
     [SerializeField] List<GameObject> items;
 
     private HealthSystem healthSystem;
+    private EnemySpawner spawner;
 
     private void Start()
     {
         healthSystem = GetComponent<HealthSystem>();
         healthSystem.OnDeath += OnDeath;
+
+        spawner = EnemySpawner.Instance;
     }
 
     void OnDeath()
@@ -20,6 +23,7 @@ public class DestroyOnDeath : MonoBehaviour
 
         Instantiate(items[rand], transform.position, Quaternion.identity);
 
+        spawner.EnemyDestroyed();
         Destroy(gameObject);
     }
 }
