@@ -14,6 +14,7 @@ public class EnemyProjectileController : MonoBehaviour
     private void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
+        SetRange();
     }
 
     public void Init(Vector2 shotDirection, EnemyAttackSO enemyAttackSO)
