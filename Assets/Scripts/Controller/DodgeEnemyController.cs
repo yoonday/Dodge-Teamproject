@@ -47,16 +47,13 @@ public class DodgeEnemyController : DodgeController
         collider.enabled = true;
         health.InitHealth(enemyAttack.enemyHealth);
         handler.CurrentStat.maxHealth = enemyAttack.enemyHealth;
-        enemySprite.sprite = EnemyAttack.enemySprite;
-
 
         animator.runtimeAnimatorController = enemyAttack.enemyAnimatorController;
-        animator.enabled = true;
-        enemySprite.sprite = EnemyAttack.enemySprite;
         IsBoss = enemyAttack.isBoss;
 
-        shooting.EnemyShootingInit();
+        enemySprite.sprite = enemyAttack.enemySprite;
 
+        shooting.EnemyShootingInit();
         SetRange();
 
         if(enemyAttack.isBoss)
