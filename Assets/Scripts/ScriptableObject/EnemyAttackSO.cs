@@ -15,6 +15,9 @@ public class EnemyAttackSO : PlayerAttackSO
     [Header("Enemy Stat")]
     public int enemyHealth;
 
+    [Header("Enemy Sprite")]
+    public Sprite enemySprite;
+
     public enum AttackType
     {
         STRAIGHT,
