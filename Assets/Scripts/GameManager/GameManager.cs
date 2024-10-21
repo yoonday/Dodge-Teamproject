@@ -50,10 +50,13 @@ public class GameManager : Singleton<GameManager>
     {
 
         BgmControl();
+
         currentScore = 0;
         bestScore = 0;
 
         ObjectPool = FindObjectOfType<PoolManager>();
+
+        Time.timeScale = 1;
 
     }
 

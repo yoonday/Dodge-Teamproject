@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class StartGameButton : MonoBehaviour
 {
+
+
+
     public void StartGame()
     {
         SceneManager.LoadScene("Dodge_Project_Main");
@@ -13,4 +16,15 @@ public class StartGameButton : MonoBehaviour
     {
         SceneManager.LoadScene("Dodge_Project_Start");
     }
+
+    public void PlayerCount(int player)
+    {
+
+        GameObject.Find("GameManager").GetComponent<GameManager>().playerNum = player;
+
+    }
+
+
+
+
 }
