@@ -27,7 +27,7 @@ public class PoolManager : MonoBehaviour
             for (int i = 0; i < pool.size; i++)
             {
                 // Awake하는 순간 오브젝트풀에 들어갈 Instantitate 일어나기 때문에 터무니없는 사이즈 조심
-                GameObject obj = Instantiate(pool.prefab);
+                GameObject obj = Instantiate(pool.prefab, transform);
                 obj.SetActive(false);
                 // 줄의 가장 마지막에 세움.
                 objectPool.Enqueue(obj);

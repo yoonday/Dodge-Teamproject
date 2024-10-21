@@ -40,7 +40,14 @@ public class PlayerShooting : MonoBehaviour
             {
                 float angle = i * (spreadAngle / (2 - 1)) - spreadAngle / 2;
                 Quaternion rotation = Quaternion.Euler(new Vector3(0, angle, 0));
-                GameObject PlayerBullet = Instantiate(bullet, projectileSpawnPosition.position, transform.rotation * rotation);
+
+                // 원본 
+                // GameObject PlayerBullet = Instantiate(bullet, projectileSpawnPosition.position, transform.rotation * rotation);
+                // 아래는 오브젝트 풀링
+
+                var PlayerBullet = GameManager.Instance.ObjectPool.SpawnFromPool("PlayerBullet");
+                PlayerBullet.transform.SetPositionAndRotation(projectileSpawnPosition.position, transform.rotation * rotation);
+
                 Rigidbody2D rb = PlayerBullet.GetComponent<Rigidbody2D>();
                 rb.velocity = PlayerBullet.transform.forward * bulletSpeed;
             }
@@ -52,7 +59,14 @@ public class PlayerShooting : MonoBehaviour
             {
                 float angle = i * (spreadAngle / (3 - 1)) - spreadAngle / 2;
                 Quaternion rotation = Quaternion.Euler(new Vector3(0, angle, 0));
-                GameObject PlayerBullet = Instantiate(bullet, projectileSpawnPosition.position, transform.rotation * rotation);
+
+                // 원본 
+                // GameObject PlayerBullet = Instantiate(bullet, projectileSpawnPosition.position, transform.rotation * rotation);
+                // 아래는 오브젝트 풀링
+
+                var PlayerBullet = GameManager.Instance.ObjectPool.SpawnFromPool("PlayerBullet");
+                PlayerBullet.transform.SetPositionAndRotation(projectileSpawnPosition.position, transform.rotation * rotation);
+
                 Rigidbody2D rb = PlayerBullet.GetComponent<Rigidbody2D>();
                 rb.velocity = PlayerBullet.transform.forward * bulletSpeed;
             }
@@ -64,7 +78,13 @@ public class PlayerShooting : MonoBehaviour
             {
                 float angle = i * (spreadAngle / (4 - 1)) - spreadAngle / 2;
                 Quaternion rotation = Quaternion.Euler(new Vector3(0, angle, 0));
-                GameObject PlayerBullet = Instantiate(bullet, projectileSpawnPosition.position, transform.rotation * rotation);
+
+                // 원본 
+                // GameObject PlayerBullet = Instantiate(bullet, projectileSpawnPosition.position, transform.rotation * rotation);
+                // 아래는 오브젝트 풀링
+                var PlayerBullet = GameManager.Instance.ObjectPool.SpawnFromPool("PlayerBullet");
+                PlayerBullet.transform.SetPositionAndRotation(projectileSpawnPosition.position, transform.rotation * rotation);
+
                 Rigidbody2D rb = PlayerBullet.GetComponent<Rigidbody2D>();
                 rb.velocity = PlayerBullet.transform.forward * bulletSpeed;
             }
@@ -74,7 +94,13 @@ public class PlayerShooting : MonoBehaviour
     private void CreateProjectile()
     {
         // 투사체(총알)이 스폰 포인트에서 회전 없이 생성됨
-        Instantiate(PlayerBullet, projectileSpawnPosition.position, Quaternion.identity);
+
+        // 원본 
+        //Instantiate(PlayerBullet, projectileSpawnPosition.position, Quaternion.identity);
+        // 아래는 오브젝트 풀링
+        var PlayerBullet = GameManager.Instance.ObjectPool.SpawnFromPool("PlayerBullet");
+        PlayerBullet.transform.SetPositionAndRotation(projectileSpawnPosition.position, Quaternion.identity);
+
         AudioManager.Instance.PlaySfx(AudioManager.Sfx.Fire);
     }
 
