@@ -787,6 +787,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &736565242 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8913546734539804924, guid: 3a952561ff300b249afaeba043dc07c1, type: 3}
+  m_PrefabInstance: {fileID: 1115932511}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d56e76c889a2e144aee2e6ff3d2c94d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &768922010
 GameObject:
   m_ObjectHideFlags: 0
@@ -903,6 +914,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 4240228090591348566, guid: 3a952561ff300b249afaeba043dc07c1, type: 3}
+      propertyPath: playerPrefab.Array.data[0]
+      value: 
+      objectReference: {fileID: 98032459230036850, guid: bbfe2365ef3ed7d4894a7a6fc66a68b6, type: 3}
+    - target: {fileID: 4240228090591348566, guid: 3a952561ff300b249afaeba043dc07c1, type: 3}
+      propertyPath: playerPrefab.Array.data[1]
+      value: 
+      objectReference: {fileID: 3524373873672617361, guid: bf34a03df15e5ba4a9e88f20d7ff0f42, type: 3}
     - target: {fileID: 8133277321648726523, guid: 3a952561ff300b249afaeba043dc07c1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -942,10 +961,6 @@ PrefabInstance:
     - target: {fileID: 8133277321648726523, guid: 3a952561ff300b249afaeba043dc07c1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8913546734539804924, guid: 3a952561ff300b249afaeba043dc07c1, type: 3}
-      propertyPath: playerNum
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1198,6 +1213,18 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 736565242}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: MultiplayCheck
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1524,6 +1551,18 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 736565242}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: MultiplayCheck
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0

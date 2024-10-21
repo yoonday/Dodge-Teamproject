@@ -14,7 +14,7 @@ public class HealthSystem : MonoBehaviour
     public event Action Oninvincibility;
      
     private float timeSinceLastChange = float.MaxValue;
-    public float CurrentHealth { get; private set; }
+    public int CurrentHealth { get; private set; }
     private bool isAttacked = false; // 어디서 사용하는지?
 
     private void Awake()
