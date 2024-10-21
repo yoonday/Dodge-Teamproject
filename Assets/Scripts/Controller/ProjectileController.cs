@@ -17,7 +17,7 @@ public class ProjectileController : MonoBehaviour
 
         if (transform.position.y > screenTopMax)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 

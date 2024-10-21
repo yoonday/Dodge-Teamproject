@@ -19,7 +19,13 @@ public class PlayerCollisiontroller : MonoBehaviour
         {
             case "Enemy": // 적, 적 총알에 맞을 경우 체력감소
                 healthSystem.ChangeHealth(-1);
-                Destroy(collision.gameObject);
+
+                if (collision.gameObject.GetComponent<HealthSystem>() == null)
+                {
+                    collision.gameObject.SetActive(false);
+                }
+
+
                 break;
 
             case "Item": // 아이템일 경우 효과 적용

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class DestroyOnDeath : MonoBehaviour
@@ -8,6 +9,8 @@ public class DestroyOnDeath : MonoBehaviour
 
     private HealthSystem healthSystem;
     private EnemySpawner spawner;
+    private Animator animator;
+    private DodgeEnemyController dodgeEnemyController;
 
     private void Start()
     {
@@ -15,15 +18,29 @@ public class DestroyOnDeath : MonoBehaviour
         healthSystem.OnDeath += OnDeath;
 
         spawner = EnemySpawner.Instance;
+        animator = GetComponentInChildren<Animator>();
+        dodgeEnemyController = GetComponent<DodgeEnemyController>();
     }
 
     void OnDeath()
     {
+        dodgeEnemyController.Stop();
+
         int rand = Random.Range(0, items.Count);
 
         Instantiate(items[rand], transform.position, Quaternion.identity);
 
-        spawner.EnemyDestroyed();
-        Destroy(gameObject);
+        spawner.EnemyDestroyed(dodgeEnemyController.IsBoss);
+
+        animator.SetTrigger("isDeath");
+        healthSystem.OnDeath -= OnDeath;
+
+        StartCoroutine(SetActiveFalseCoroutine());
+    }
+    
+    private IEnumerator SetActiveFalseCoroutine()
+    {
+        yield return new WaitForSeconds(0.5f);
+        gameObject.SetActive(false);
     }
 }
