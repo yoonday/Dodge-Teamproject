@@ -126,7 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseStats:
     maxHealth: 3
-    speed: 5
+    speed: 10
     playerSO: {fileID: 11400000, guid: 368e75a02bb365e49b956bdc56369b73, type: 2}
   statModifiers: []
 --- !u!114 &5311043452176905584
@@ -153,6 +153,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e099684d30cd6234694445312e9ef415, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bullet: {fileID: 0}
+  spreadAngle: 30
+  bulletCount: 5
+  bulletSpeed: 10
   projectileSpawnPosition: {fileID: 3700510920390822517}
   PlayerBullet: {fileID: 8046301987979651682, guid: ee9cb767c19f3f94bae4c58b044a76e9, type: 3}
 --- !u!61 &-7443914104519824116
