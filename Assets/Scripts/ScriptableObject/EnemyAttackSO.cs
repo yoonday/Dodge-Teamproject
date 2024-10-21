@@ -14,14 +14,17 @@ public class EnemyAttackSO : PlayerAttackSO
 
     [Header("Enemy Stat")]
     public int enemyHealth;
+    public bool isBoss;
 
     [Header("Enemy Sprite")]
     public Sprite enemySprite;
+    public RuntimeAnimatorController enemyAnimatorController;
 
     public enum AttackType
     {
         STRAIGHT,
         ANGLED,
-        SPREAD
+        SPREAD,
+        STAR
     }
 }
