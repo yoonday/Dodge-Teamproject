@@ -43,7 +43,8 @@ public class PlayerShooting : MonoBehaviour
     private void CreateProjectile()
     {
         // 투사체(총알)이 스폰 포인트에서 회전 없이 생성됨
-        Instantiate(PlayerBullet, projectileSpawnPosition.position, Quaternion.identity); 
+        Instantiate(PlayerBullet, projectileSpawnPosition.position, Quaternion.identity);
+        AudioManager.Instance.PlaySfx(AudioManager.Sfx.Fire);
     }
 
     public void SpreadShoot()

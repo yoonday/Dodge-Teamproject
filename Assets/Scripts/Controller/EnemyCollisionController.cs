@@ -16,7 +16,7 @@ public class EnemyCollisionController : MonoBehaviour
         if(collision.gameObject.CompareTag("PlayerBullet"))
         {
             healthSystem.ChangeHealth(-1);
-
+            AudioManager.Instance.PlaySfx(AudioManager.Sfx.Death);
             if (collision.gameObject.GetComponent<DodgeController>() == null) { collision.gameObject.SetActive(false); }
         }
     }

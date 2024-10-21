@@ -38,7 +38,7 @@ public class ItemUIController : MonoBehaviour
     }
 
 
-    IEnumerator SkillTimeChk(int ItemType)
+    IEnumerator SkillTimeChk()
     { 
     
         yield return null;

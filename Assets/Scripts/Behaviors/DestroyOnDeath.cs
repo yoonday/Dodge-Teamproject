@@ -38,6 +38,8 @@ public class DestroyOnDeath : MonoBehaviour
         collider.enabled = false;
 
         StartCoroutine(SetActiveFalseCoroutine());
+
+        AudioManager.Instance.PlaySfx(AudioManager.Sfx.Death);
     }
     
     private IEnumerator SetActiveFalseCoroutine()
