@@ -45,6 +45,7 @@ public class DodgeEnemyController : DodgeController
         handler.CurrentStat.maxHealth = enemyAttack.enemyHealth;
         enemySprite.sprite = EnemyAttack.enemySprite;
         animator.runtimeAnimatorController = enemyAttack.enemyAnimatorController;
+        animator.enabled = true;
         IsBoss = enemyAttack.isBoss;
 
         SetRange();

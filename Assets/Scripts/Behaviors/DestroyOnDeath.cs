@@ -41,6 +41,8 @@ public class DestroyOnDeath : MonoBehaviour
     private IEnumerator SetActiveFalseCoroutine()
     {
         yield return new WaitForSeconds(0.5f);
+        animator.Rebind();
+        animator.enabled = false;
         gameObject.SetActive(false);
     }
 }
