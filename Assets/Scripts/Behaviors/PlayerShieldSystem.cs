@@ -35,6 +35,8 @@ public class PlayerShieldSystem : MonoBehaviour
 
             // 일정 시간 후 방어막 비활성화
             Invoke("DeactivateShield", shieldDuration);
+
+            canActivateShield = false;
         }
     }
 

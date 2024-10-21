@@ -9,7 +9,17 @@ public class PlayerShield : MonoBehaviour
     {
         if (Enemy.CompareTag("Enemy"))
         {
-            Enemy.gameObject.GetComponent<HealthSystem>()?.ChangeHealth(-int.MaxValue);
+            var healthSystem = Enemy.gameObject.GetComponent<HealthSystem>();
+            var enemyController = Enemy.gameObject.GetComponent<DodgeEnemyController>();
+
+            if (healthSystem != null && enemyController.IsBoss == false)
+            {
+                healthSystem.ChangeHealth(-int.MaxValue);
+            }
+            else
+            {
+                Enemy.gameObject.SetActive(false);
+            }
         }
     }
 }
