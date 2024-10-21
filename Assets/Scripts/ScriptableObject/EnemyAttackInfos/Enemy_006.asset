@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d18d0b1457a2a049b600201eb3dfcf2, type: 3}
+  m_Name: Enemy_006
+  m_EditorClassIdentifier: 
+  size: 0
+  delay: 0.5
+  power: 0
+  speed: 10
+  target:
+    serializedVersion: 2
+    m_Bits: 0
+  angle: 0
+  angleDeg: 0
+  amount: 3
+  attackCountAtOnce: 2
+  spreadDelay: 0.1
+  enemyHealth: 3
+  isBoss: 0
+  enemySprite: {fileID: 2093325809, guid: 0558b716f5c67a5429ec02dda714bd6f, type: 3}
+  enemyAnimatorController: {fileID: 22100000, guid: b96f1cfa27794d344aee2e04d786c407, type: 2}

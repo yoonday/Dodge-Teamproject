@@ -53,6 +53,8 @@ public class GameManager : Singleton<GameManager>
         currentScore = 0;
         bestScore = 0;
 
+        ObjectPool = FindObjectOfType<PoolManager>();
+
     }
 
 

@@ -3,25 +3,94 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
+using System.Runtime.CompilerServices;
 
-public class EnemySpawner : MonoBehaviour
+public class EnemySpawner : Singleton<EnemySpawner>
 {
-    [SerializeField] GameObject enemyPrefab;
     [SerializeField] EnemyInfo[] enemyInfos;
     [SerializeField] float spawnCooltime;
-    [SerializeField] float levelUpTime;
+    [SerializeField] int levelUpCount;
 
-    private float gameTime;
     private int currentLevel;
+    private int destroyedEnemyCount;
 
     private float randomPosRangeXMin;
     private float randomPosRangeXMax;
     private float posY;
 
+    private bool isBoss = false;
+
     EnemyAttackSO[] currentEnemies;
 
 
     void Start()
+    {
+        destroyedEnemyCount = 0;
+        SetRange();
+
+        StartCoroutine(SpawnEnemy());
+
+        SceneManager.sceneLoaded += DestroyEnemySpawner;
+    }
+
+    private IEnumerator SpawnEnemy()
+    {
+        while (true)
+        {
+            bool bossSpawned = false;
+
+            currentLevel = destroyedEnemyCount / levelUpCount + 1;
+            currentLevel = Mathf.Clamp(currentLevel, 1, 3);
+
+            EnemyAttackSO enemySO;
+
+            if (isBoss)
+            {
+                bossSpawned = true;
+
+                int currentLevelBoss = 5 * (currentLevel - 1) - 1;
+
+                enemySO = currentEnemies[currentLevelBoss];
+            }
+            else
+            {
+                var tempEnemies = from info in enemyInfos
+                                  where info.level == currentLevel
+                                  select info.enemyAttackSO;
+
+                currentEnemies = tempEnemies.ToArray();
+
+                int rand = Random.Range(0, currentEnemies.Length - 1);
+
+                enemySO = currentEnemies[rand];
+            }
+
+            Vector2 randInstPos = new(Random.Range(randomPosRangeXMin, randomPosRangeXMax), posY);
+
+            var enemy = GameManager.Instance.ObjectPool.SpawnFromPool("Enemy");
+            enemy.transform.position = randInstPos;
+
+            enemy.GetComponent<DodgeEnemyController>().Init(enemySO);
+
+            yield return new WaitForSeconds(spawnCooltime);
+
+            if (bossSpawned)
+                yield return new WaitUntil(() => isBoss == false);
+        }
+    }
+
+    public void EnemyDestroyed(bool isBoss)
+    {
+        destroyedEnemyCount++;
+
+        if(isBoss)
+            this.isBoss = !isBoss;
+
+        if (destroyedEnemyCount % levelUpCount == 0 && destroyedEnemyCount != 0) this.isBoss = true;
+    }
+
+    private void SetRange()
     {
         Camera mainCamera = Camera.main;
 
@@ -32,30 +101,14 @@ public class EnemySpawner : MonoBehaviour
 
         randomPosRangeXMin = mainCamera.transform.position.x - cameraWidth; // È­¸é ¸Ç ¿ÞÂÊ ÁÂÇ¥.
         randomPosRangeXMax = mainCamera.transform.position.x + cameraWidth; // È­¸é ¸Ç ¿À¸¥ÂÊ ÁÂÇ¥.
-
-        StartCoroutine(SpawnEnemy());
     }
 
-    private IEnumerator SpawnEnemy()
+    private void DestroyEnemySpawner(Scene scene, LoadSceneMode mode)
     {
-        while (true)
+        if (scene.name == "Dodge_Project_Start")
         {
-            currentLevel = (int)(gameTime / levelUpTime) + 1;
-
-            var tempEnemies = from info in enemyInfos
-                                 where info.level <= currentLevel
-                                 select info.enemyAttackSO;
-
-            currentEnemies = tempEnemies.ToArray();
-
-            int rand = Random.Range(0, currentEnemies.Length);
-
-            Vector2 randInstPos = new(Random.Range(randomPosRangeXMin, randomPosRangeXMax), posY);
-
-            var enemy = Instantiate(enemyPrefab, randInstPos, enemyPrefab.transform.rotation);
-            enemy.GetComponent<DodgeEnemyController>().Init(1, currentEnemies[rand]);
-
-            yield return new WaitForSeconds(spawnCooltime);
+            SceneManager.sceneLoaded -= DestroyEnemySpawner;
+            Destroy(gameObject);
         }
     }
 }

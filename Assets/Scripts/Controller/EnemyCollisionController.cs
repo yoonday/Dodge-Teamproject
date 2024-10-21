@@ -17,7 +17,7 @@ public class EnemyCollisionController : MonoBehaviour
         {
             healthSystem.ChangeHealth(-1);
 
-            if (collision.gameObject.GetComponent<DodgeController>() == null) { Destroy(collision.gameObject); }
+            if (collision.gameObject.GetComponent<DodgeController>() == null) { collision.gameObject.SetActive(false); }
         }
     }
 }

@@ -9,7 +9,7 @@ public class PlayerShield : MonoBehaviour
     {
         if (Enemy.CompareTag("Enemy"))
         {
-            Destroy(Enemy.gameObject);
+            Enemy.gameObject.GetComponent<HealthSystem>()?.ChangeHealth(-int.MaxValue);
         }
     }
 }

@@ -37,9 +37,11 @@ public class HealthSystem : MonoBehaviour
 
     public bool ChangeHealth(int change)
     {
-        CurrentHealth += change; // 체력에 값 변화
 
-        if (CurrentHealth <= 0f)
+        CurrentHealth += change; // 체력에 값 변화
+        Debug.Log(CurrentHealth + " " + change);
+
+        if (CurrentHealth <= 0)
         {
             CallDeath();
             return true;
@@ -68,6 +70,13 @@ public class HealthSystem : MonoBehaviour
         OnDeath?.Invoke();
 
     }
+
+    public void InitHealth(int maxHealth)
+    {
+        CurrentHealth = maxHealth;
+
+        Debug.Log(CurrentHealth);
+    }    
 
 
 }
