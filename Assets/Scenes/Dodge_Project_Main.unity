@@ -1061,7 +1061,35 @@ MonoBehaviour:
   enemyInfos:
   - level: 1
     enemyAttackSO: {fileID: 11400000, guid: b5da3c1e4a9b69d4b9f9e9e3347e13ca, type: 2}
-  spawnCooltime: 10
+  - level: 1
+    enemyAttackSO: {fileID: 11400000, guid: 76e359dd4f9fc654e84593088d28d2eb, type: 2}
+  - level: 1
+    enemyAttackSO: {fileID: 11400000, guid: dc2ae90b9ac933f46bc97b1e56a5aace, type: 2}
+  - level: 1
+    enemyAttackSO: {fileID: 11400000, guid: c7719e2a1fa146e458dffacfdde5900f, type: 2}
+  - level: 1
+    enemyAttackSO: {fileID: 11400000, guid: c46b7e332c28e4f4aafdc9dea67c323b, type: 2}
+  - level: 2
+    enemyAttackSO: {fileID: 11400000, guid: 9369bb6158347884dbf374fb5404dd74, type: 2}
+  - level: 2
+    enemyAttackSO: {fileID: 11400000, guid: c6610ee951400f44daa1e7b4e0c131a2, type: 2}
+  - level: 2
+    enemyAttackSO: {fileID: 11400000, guid: 9dac118208711674aa1b6a164f1404bc, type: 2}
+  - level: 2
+    enemyAttackSO: {fileID: 11400000, guid: 948dd886ef18c79449418c02bd1776f9, type: 2}
+  - level: 2
+    enemyAttackSO: {fileID: 11400000, guid: c88ca6fd451626149bfe3485c13ac74b, type: 2}
+  - level: 3
+    enemyAttackSO: {fileID: 11400000, guid: 04546edafea569a459bd415743f29fde, type: 2}
+  - level: 3
+    enemyAttackSO: {fileID: 11400000, guid: 6f4104a2198a4d54f84dc8ebb888b0d6, type: 2}
+  - level: 3
+    enemyAttackSO: {fileID: 11400000, guid: 6c8924742269c5b4ca40a069e8f10a91, type: 2}
+  - level: 3
+    enemyAttackSO: {fileID: 11400000, guid: fc8f862c981c7a84086d02628f415cc4, type: 2}
+  - level: 3
+    enemyAttackSO: {fileID: 11400000, guid: abb0049b97fb3e142a99e7300af8cbdc, type: 2}
+  spawnCooltime: 5
   levelUpCount: 10
 --- !u!4 &1065039018
 Transform:
@@ -3163,7 +3191,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6593892142418331232, guid: 749952aef896e434ab05fa5fe371b4ae, type: 3}
       propertyPath: Pools.Array.data[0].size
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6593892142418331232, guid: 749952aef896e434ab05fa5fe371b4ae, type: 3}
       propertyPath: Pools.Array.data[1].size
