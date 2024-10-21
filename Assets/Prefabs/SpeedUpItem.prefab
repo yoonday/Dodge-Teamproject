@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5492100070259181940}
   - component: {fileID: 1900561503249197957}
   - component: {fileID: 1705889203748819594}
+  - component: {fileID: -5919389615335389894}
   m_Layer: 0
   m_Name: SpeedUpItem
   m_TagString: Item
@@ -94,6 +95,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.0137179, y: 0.49243933}
   m_EdgeRadius: 0
+--- !u!114 &-5919389615335389894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1461051480317883475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25f976cda8f9c1c42a887d96cc026c03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fallSpeed: 1.5
 --- !u!1 &9169753410967807219
 GameObject:
   m_ObjectHideFlags: 0

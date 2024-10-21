@@ -10,7 +10,7 @@ public class EnemyShooting : MonoBehaviour
     private DodgeEnemyController controller;
     private EnemyAttackSO enemyAttack;
 
-    private readonly float distance_Straight = 0.5f;
+    private readonly float distance_Straight = 1f;
 
 
     private void Awake()
@@ -21,6 +21,10 @@ public class EnemyShooting : MonoBehaviour
     void Start()
     {
         controller.OnAttackEvent += StartAttackCoroutine;
+    }
+
+    public void EnemyShootingInit()
+    {
         enemyAttack = controller.EnemyAttack;
     }
 
@@ -49,9 +53,9 @@ public class EnemyShooting : MonoBehaviour
                     {
                         Vector2 spawnPosition = new(startPosX + (distance_Straight * j), projectileSpawnPosition.position.y);
 
-                        var projectile = Instantiate(projectilePrefab, spawnPosition, Quaternion.identity);
+                        var projectile = GameManager.Instance.ObjectPool.SpawnFromPool("EnemyBullet");
+                        projectile.transform.SetPositionAndRotation(spawnPosition, transform.rotation);
 
-                        projectile.transform.rotation = transform.rotation;
                         projectile.GetComponent<EnemyProjectileController>().Init(transform.TransformDirection(Vector2.up).normalized, enemyAttack);
                     }
                     break;
@@ -62,9 +66,8 @@ public class EnemyShooting : MonoBehaviour
 
                     for (int j = 0; j < enemyAttack.amount; j++)
                     {
-                        var projectile = Instantiate(projectilePrefab, projectileSpawnPosition.position, Quaternion.identity);
-
-                        projectile.transform.rotation = transform.rotation;
+                        var projectile = GameManager.Instance.ObjectPool.SpawnFromPool("EnemyBullet");
+                        projectile.transform.SetPositionAndRotation(projectileSpawnPosition.position, transform.rotation);
 
                         float curTheta = startThetaAngled + (thetaAngled * j);
                         float cos = Mathf.Cos(curTheta * Mathf.Deg2Rad);
@@ -89,9 +92,8 @@ public class EnemyShooting : MonoBehaviour
 
                     for (int j = 0; j < enemyAttack.amount; j++)
                     {
-                        var projectile = Instantiate(projectilePrefab, projectileSpawnPosition.position, Quaternion.identity);
-
-                        projectile.transform.rotation = transform.rotation;
+                        var projectile = GameManager.Instance.ObjectPool.SpawnFromPool("EnemyBullet");
+                        projectile.transform.SetPositionAndRotation(projectileSpawnPosition.position, transform.rotation);
 
                         float curTheta;
                         if (i % 2 != 0)
@@ -111,9 +113,69 @@ public class EnemyShooting : MonoBehaviour
                         yield return new WaitForSeconds(enemyAttack.spreadDelay);
                     }
                     break;
+
+                case EnemyAttackSO.AttackType.STAR:
+
+                    float startThetaStar = (180 - enemyAttack.angleDeg) / 2;
+                    float thetaStar = enemyAttack.angleDeg / (enemyAttack.amount * 2);
+                    int middleCount = enemyAttack.attackCountAtOnce - 2;
+
+                    int amount;
+                    if (i == 0)
+                    {
+                        amount = enemyAttack.amount;
+                    }
+                    else if (i < enemyAttack.attackCountAtOnce - 1)
+                    {
+                        amount = enemyAttack.amount * 2;
+                    }
+                    else
+                    {
+                        amount = enemyAttack.amount + 1;
+                    }
+
+                    for (int j = 0; j < amount; j ++)
+                    {
+                        var projectile = GameManager.Instance.ObjectPool.SpawnFromPool("EnemyBullet");
+                        projectile.transform.SetPositionAndRotation(projectileSpawnPosition.position, transform.rotation);
+
+                        float curTheta;
+
+                        if (i == 0)
+                        {
+                            curTheta = startThetaStar + (thetaStar * (j * 2 + 1));
+                        }
+                        else if (i < enemyAttack.attackCountAtOnce - 1)
+                        {
+                            float middleCoeff;
+
+                            if (j % 2 == 0)
+                            {
+                                middleCoeff = 1 - (i / (float)(middleCount + 1));
+                            }
+                            else
+                            {
+                                middleCoeff = i / (float)(middleCount + 1);
+                            }
+
+                            curTheta = startThetaStar + thetaStar * (j + middleCoeff);
+                        }
+                        else
+                        {
+                            curTheta = startThetaStar + 2 * j * thetaStar;
+                        }
+
+                        float cos = Mathf.Cos(curTheta * Mathf.Deg2Rad);
+                        float sin = Mathf.Sin(curTheta * Mathf.Deg2Rad);
+
+                        projectile.GetComponent<EnemyProjectileController>().Init(transform.TransformDirection(new(cos, sin)).normalized, enemyAttack);
+                    }
+
+                    break;
             }
+
+            yield return new WaitForSeconds(enemyAttack.delay);
         }
 
-        yield return new WaitForSeconds(enemyAttack.delay);
     }
 }

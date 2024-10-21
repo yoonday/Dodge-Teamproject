@@ -16,7 +16,6 @@ public class MonsterUIController : DodgeUIController
     {
         GameManager.Instance.currentScore += 1;
         score.text = $"Ã³Ä¡ ¼ö : {GameManager.Instance.currentScore.ToString()}";
-
     }
 
 
