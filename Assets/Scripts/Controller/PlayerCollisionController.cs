@@ -18,6 +18,8 @@ public class PlayerCollisiontroller : MonoBehaviour
         switch (tag)
         {
             case "Enemy": // 적, 적 총알에 맞을 경우 체력감소
+
+                AudioManager.Instance.PlaySfx(AudioManager.Sfx.Hit);
                 healthSystem.ChangeHealth(-1);
 
                 if (collision.gameObject.GetComponent<HealthSystem>() == null)
@@ -29,6 +31,8 @@ public class PlayerCollisiontroller : MonoBehaviour
                 break;
 
             case "Item": // 아이템일 경우 효과 적용
+
+                AudioManager.Instance.PlaySfx(AudioManager.Sfx.Item);
 
                 ItemStat item = collision.gameObject.GetComponent<ItemStat>();
                 if (item != null)

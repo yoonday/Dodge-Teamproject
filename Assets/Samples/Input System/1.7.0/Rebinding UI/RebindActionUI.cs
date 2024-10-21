@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.UIElements;
 ////TODO: localization support
 
 ////TODO: deal with composites that have parts bound in different control schemes
@@ -217,18 +218,54 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
             if (!ResolveActionAndBinding(out var action, out var bindingIndex))
                 return;
 
-            if (action.bindings[bindingIndex].isComposite)
-            {
-                // It's a composite. Remove overrides from part bindings.
-                for (var i = bindingIndex + 1; i < action.bindings.Count && action.bindings[i].isPartOfComposite; ++i)
-                    action.RemoveBindingOverride(i);
-            }
-            else
-            {
-                action.RemoveBindingOverride(bindingIndex);
-            }
+            ResetBinding(action, bindingIndex);
+
+            //if (action.bindings[bindingIndex].isComposite)
+            //{
+            //    // It's a composite. Remove overrides from part bindings.
+            //    for (var i = bindingIndex + 1; i < action.bindings.Count && action.bindings[i].isPartOfComposite; ++i)
+            //        action.RemoveBindingOverride(i);
+            //}
+            //else
+            //{
+            //    action.RemoveBindingOverride(bindingIndex);
+            //}
+
             UpdateBindingDisplay();
         }
+
+        private void ResetBinding(InputAction action, int bindingIndex)
+        { 
+        
+            InputBinding newBinding = action.bindings[bindingIndex];
+            string oldOverridePath = newBinding.overridePath;
+
+            action.RemoveBindingOverride(bindingIndex);
+
+            foreach (InputAction otherAction in action.actionMap.actions)
+            {
+                if (otherAction == action)
+                { 
+                    
+                    continue;
+
+                }
+
+                for (int i = 0; i < otherAction.bindings.Count; i++)
+                { 
+                    InputBinding binding = otherAction.bindings[i];
+                    if (binding.overridePath == newBinding.path)
+                    { 
+                        otherAction.ApplyBindingOverride(i, oldOverridePath);
+                    }
+                }
+
+            
+            }
+
+
+        }
+
 
         /// <summary>
         /// Initiate an interactive rebind that lets the player actuate a control to choose a new binding
@@ -264,6 +301,7 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
 
             // Configure the rebind.
             m_RebindOperation = action.PerformInteractiveRebinding(bindingIndex)
+                .WithCancelingThrough("<keyboard>/escape")
                 .OnCancel(
                     operation =>
                     {
@@ -277,6 +315,17 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
                     {
                         m_RebindOverlay?.SetActive(false);
                         m_RebindStopEvent?.Invoke(this, operation);
+
+
+                        if (checkDuplicateBindgs(action, bindingIndex, allCompositeParts))
+                        {
+                            action.RemoveBindingOverride(bindingIndex);
+                            CleanUp();
+                            PerformInteractiveRebind(action, bindingIndex, allCompositeParts);
+                            return;
+                        }
+                        
+                        
                         UpdateBindingDisplay();
                         CleanUp();
 
@@ -314,6 +363,50 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
             m_RebindStartEvent?.Invoke(this, m_RebindOperation);
 
             m_RebindOperation.Start();
+        }
+
+        private bool checkDuplicateBindgs(InputAction action, int bindingIndex, bool allCompositeParts = false)
+        { 
+            InputBinding newBinding = action.bindings[bindingIndex];
+
+            foreach (InputBinding binding in action.actionMap.bindings)
+            {
+
+                if (binding.action == newBinding.action)
+                {
+                    continue;
+                
+                }
+
+                if (binding.effectivePath == newBinding.effectivePath)
+                {
+
+                    Debug.Log("Duplicate binding found : " + newBinding.effectivePath);
+                    return true;
+
+                }
+
+            }
+
+            if (allCompositeParts)
+            {
+                for (int i = 1; i < bindingIndex; i++)
+                {
+
+                    if (action.bindings[i].effectivePath == newBinding.overridePath)
+                    {
+
+                        Debug.Log("Duplicate binding found : " + newBinding.effectivePath);
+                        return true;
+
+
+                    }
+                
+                }
+            
+            }
+
+            return false;
         }
 
         protected void OnEnable()

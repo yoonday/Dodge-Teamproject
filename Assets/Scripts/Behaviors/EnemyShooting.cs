@@ -195,6 +195,6 @@ public class EnemyShooting : MonoBehaviour
 
             yield return new WaitForSeconds(enemyAttack.delay);
         }
-
+        AudioManager.Instance.PlaySfx(AudioManager.Sfx.Fire);
     }
 }
