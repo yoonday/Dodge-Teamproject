@@ -4,14 +4,13 @@ using UnityEngine;
 using System.Linq;
 using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
+using System.Runtime.CompilerServices;
 
 public class EnemySpawner : Singleton<EnemySpawner>
 {
-    [SerializeField] GameObject enemyPrefab;
     [SerializeField] EnemyInfo[] enemyInfos;
     [SerializeField] float spawnCooltime;
-    [SerializeField] int eliteMobFreq;
-    [SerializeField] int bossMobFreq;
+    [SerializeField] int levelUpCount;
 
     private int currentLevel;
     private int destroyedEnemyCount;
@@ -19,6 +18,8 @@ public class EnemySpawner : Singleton<EnemySpawner>
     private float randomPosRangeXMin;
     private float randomPosRangeXMax;
     private float posY;
+
+    private bool isBoss = false;
 
     EnemyAttackSO[] currentEnemies;
 
@@ -37,28 +38,56 @@ public class EnemySpawner : Singleton<EnemySpawner>
     {
         while (true)
         {
-            currentLevel = 1;
+            bool bossSpawned = false;
 
-            var tempEnemies = from info in enemyInfos
-                                 where info.level <= currentLevel
-                                 select info.enemyAttackSO;
+            currentLevel = destroyedEnemyCount / levelUpCount + 1;
+            currentLevel = Mathf.Clamp(currentLevel, 1, 3);
 
-            currentEnemies = tempEnemies.ToArray();
+            EnemyAttackSO enemySO;
 
-            int rand = Random.Range(0, currentEnemies.Length);
+            if (isBoss)
+            {
+                bossSpawned = true;
+
+                int currentLevelBoss = 5 * (currentLevel - 1) - 1;
+
+                enemySO = currentEnemies[currentLevelBoss];
+            }
+            else
+            {
+                var tempEnemies = from info in enemyInfos
+                                  where info.level == currentLevel
+                                  select info.enemyAttackSO;
+
+                currentEnemies = tempEnemies.ToArray();
+
+                int rand = Random.Range(0, currentEnemies.Length - 1);
+
+                enemySO = currentEnemies[rand];
+            }
 
             Vector2 randInstPos = new(Random.Range(randomPosRangeXMin, randomPosRangeXMax), posY);
 
-            var enemy = Instantiate(enemyPrefab, randInstPos, enemyPrefab.transform.rotation);
-            enemy.GetComponent<DodgeEnemyController>().Init(1, currentEnemies[rand]);
+            var enemy = GameManager.Instance.ObjectPool.SpawnFromPool("Enemy");
+            enemy.transform.position = randInstPos;
+
+            enemy.GetComponent<DodgeEnemyController>().Init(enemySO);
 
             yield return new WaitForSeconds(spawnCooltime);
+
+            if (bossSpawned)
+                yield return new WaitUntil(() => isBoss == false);
         }
     }
 
-    public void EnemyDestroyed()
+    public void EnemyDestroyed(bool isBoss)
     {
         destroyedEnemyCount++;
+
+        if(isBoss)
+            this.isBoss = !isBoss;
+
+        if (destroyedEnemyCount % levelUpCount == 0 && destroyedEnemyCount != 0) this.isBoss = true;
     }
 
     private void SetRange()
