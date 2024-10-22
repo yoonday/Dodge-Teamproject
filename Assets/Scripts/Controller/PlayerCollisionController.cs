@@ -57,11 +57,10 @@ public class PlayerCollisiontroller : MonoBehaviour
                     {
                         itemUIController.playerSkillimage.sprite = collision.gameObject.GetComponentInChildren<SpriteRenderer>().sprite;
                         itemUIController.skillTimes = item.ItemDuration;
-
                     }
 
 
-                    item.ApplyItemEffect(healthSystem, statHandler, player);
+                    item.ApplyItemEffect(healthSystem, statHandler, player, itemUIController.isHideSkill);
                     Destroy(collision.gameObject);
                 }
                 break;

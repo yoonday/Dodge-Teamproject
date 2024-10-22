@@ -18,7 +18,7 @@ public class ItemStat : MonoBehaviour
     public float ItemDuration = 5f;
 
 
-    public void ApplyItemEffect(HealthSystem healthSystem, PlayerStatHandler statHandler, GameObject player) // 효과 적용
+    public void ApplyItemEffect(HealthSystem healthSystem, PlayerStatHandler statHandler, GameObject player, bool persistent) // 효과 적용
     {
         switch (itemType)
         {
@@ -27,18 +27,26 @@ public class ItemStat : MonoBehaviour
                 break;
 
             case ItemType.Speed:
+                if(persistent)
                 statHandler.ChangeSpeedStat(speed, ItemDuration); // 속도 증가, 5초 동안 지속됨
               
                 break;
 
             case ItemType.Shield:
-                PlayerShieldSystem shieldController = player.GetComponent<PlayerShieldSystem>();
-                if (shieldController != null)
+
+                if (!persistent)
                 {
 
-                    shieldController.SetShieldReady(); // 방어막 활성화 요청
+                    PlayerShieldSystem shieldController = player.GetComponent<PlayerShieldSystem>();
+                    if (shieldController != null)
+                    {
+
+                        shieldController.SetShieldReady(); // 방어막 활성화 요청
+
+                    }
 
                 }
+
                 break;
 
         }
