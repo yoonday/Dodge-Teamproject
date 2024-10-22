@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerShooting : MonoBehaviour
 {
     public GameObject bullet; // 총알 프리팹
-    public float spreadAngle = 30f; // 분산 각도
+    public float spreadAngle; // 분산 각도
     public int bulletCount; // 발사할 총알 개수
     public float bulletSpeed = 10f; // 총알 속도
 
@@ -38,7 +38,7 @@ public class PlayerShooting : MonoBehaviour
         {
             for (int i = 0; i < 2; i++)
             {
-                float angle = i * (spreadAngle / (2 - 1)) - spreadAngle / 2;
+                float angle = i * (30 / (2 - 1)) - 30 / 2;
                 Quaternion rotation = Quaternion.Euler(new Vector3(0, angle, 0));
 
                 // 원본 
@@ -57,7 +57,7 @@ public class PlayerShooting : MonoBehaviour
         {
             for (int i = 0; i < 3; i++)
             {
-                float angle = i * (spreadAngle / (3 - 1)) - spreadAngle / 2;
+                float angle = i * (5 / (3 - 1)) - 5 / 2;
                 Quaternion rotation = Quaternion.Euler(new Vector3(0, angle, 0));
 
                 // 원본 
@@ -72,11 +72,11 @@ public class PlayerShooting : MonoBehaviour
             }
         }
 
-        else if (GameManager.Instance.currentScore >= 30f && GameManager.Instance.currentScore <= 39f)
+        else if (GameManager.Instance.currentScore >= 30f && GameManager.Instance.currentScore <= 50f)
         {
             for (int i = 0; i < 4; i++)
             {
-                float angle = i * (spreadAngle / (4 - 1)) - spreadAngle / 2;
+                float angle = i * (30 / (4 - 1)) - 30 / 2;
                 Quaternion rotation = Quaternion.Euler(new Vector3(0, angle, 0));
 
                 // 원본 
