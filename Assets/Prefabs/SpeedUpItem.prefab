@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1461051480317883475}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.021, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -50,6 +50,7 @@ MonoBehaviour:
   itemType: 1
   health: 1
   speed: 20
+  ItemDuration: 5
 --- !u!61 &1705889203748819594
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -107,7 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25f976cda8f9c1c42a887d96cc026c03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallSpeed: 1.5
+  fallSpeed: 3
 --- !u!1 &9169753410967807219
 GameObject:
   m_ObjectHideFlags: 0
@@ -134,7 +135,7 @@ Transform:
   m_GameObject: {fileID: 9169753410967807219}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.2607, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
