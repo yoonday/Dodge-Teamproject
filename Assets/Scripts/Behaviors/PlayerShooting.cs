@@ -72,7 +72,7 @@ public class PlayerShooting : MonoBehaviour
             }
         }
 
-        else if (GameManager.Instance.currentScore >= 30f && GameManager.Instance.currentScore <= 50f)
+        else if (GameManager.Instance.currentScore >= 30f)
         {
             for (int i = 0; i < 4; i++)
             {
