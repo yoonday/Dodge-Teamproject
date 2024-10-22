@@ -68,8 +68,8 @@ public class PlayerUIController : DodgeUIController
     {
 
         //플레이어 health 이미지 활성화
-       if(MaxHealth > health.CurrentHealth)
-            playerHealthIcon[(int)health.CurrentHealth].SetActive(true);
+       if(MaxHealth >= health.CurrentHealth)
+            playerHealthIcon[(int)health.CurrentHealth -1].SetActive(true);
 
     }
 
