@@ -49,6 +49,8 @@ public class EnemySpawner : Singleton<EnemySpawner>
             {
                 bossSpawned = true;
 
+                if (destroyedEnemyCount >= levelUpCount * 3) currentLevel = 4;
+
                 int currentLevelBoss = 5 * (currentLevel - 1) - 1;
 
                 Debug.Log(currentLevelBoss);
