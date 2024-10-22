@@ -50,6 +50,7 @@ MonoBehaviour:
   itemType: 2
   health: 1
   speed: 2
+  ItemDuration: 5
 --- !u!61 &1705889203748819594
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -134,7 +135,7 @@ Transform:
   m_GameObject: {fileID: 9169753410967807219}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0061, y: 0.2607, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
