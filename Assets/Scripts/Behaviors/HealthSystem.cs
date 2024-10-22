@@ -42,9 +42,6 @@ public class HealthSystem : MonoBehaviour
 
         CurrentHealth = Mathf.Clamp(CurrentHealth, 0, playerStatHandler.CurrentStat.maxHealth);
 
-        Debug.Log($"현재 체력 {CurrentHealth}");
-        Debug.Log($"변화 체력 {change}");
-
         if (CurrentHealth <= 0)
         {
             CallDeath();

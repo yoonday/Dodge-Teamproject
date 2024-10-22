@@ -56,6 +56,7 @@ public class PlayerCollisiontroller : MonoBehaviour
                     else if (item.itemType == ItemType.Shield && itemUIController.isHideSkill == false && itemUIController.playerShieldSystem.canActivateShield == false)
                     {
                         itemUIController.playerSkillimage.sprite = collision.gameObject.GetComponentInChildren<SpriteRenderer>().sprite;
+
              
                     }
 

@@ -86,7 +86,6 @@ public class ItemUIController : MonoBehaviour
     
     }
 
- 
 
     void Start()
     {
